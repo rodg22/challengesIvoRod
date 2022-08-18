@@ -1,11 +1,11 @@
 import Header from "./components/Header";
-import RandomPokemon from "./components/RandomPokemon";
+import { RandomPokemon } from "./components/RandomPokemon";
 
 function App() {
   return (
     <>
       <Header />
-      <RandomPokemon />
+      <RandomPokemon id={4} name={"charmander"} />
     </>
   );
 }

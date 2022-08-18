@@ -3,7 +3,6 @@ import { POKEMON } from "./allPokemons";
 
 const getPokemons = async (): Promise<Pokemon> => {
         const id =  Math.round(Math.random() * (POKEMON.length - 1) + 1);
-
         return {
         id: id,
         name: POKEMON[id - 1],
