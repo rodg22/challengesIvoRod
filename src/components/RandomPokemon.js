@@ -1,11 +1,11 @@
-import React from "react";
 import getPokemons from "../helper/getPokemons.ts";
 
 const RandomPokemon = () => {
-  console.log(getPokemons);
+  getPokemons().then((data) => console.log(data));
+
   return (
     <>
-      <div></div>
+      <div>{/* <img src={} alt={} /> */}</div>
     </>
   );
 };
