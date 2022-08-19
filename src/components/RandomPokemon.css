@@ -59,9 +59,64 @@ input {
 
 
 form {
-    width: 50%;
+    width: 350px;
     height: 50px;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 20px;
+}
+
+
+@media(max-width: 350px) {
+    form {
+        width: 200px;
+    }
+}
+
+
+.titleDisplayNone {
+    display: none
+}
+
+
+.idDisplayNone {
+    display: none
+}
+
+
+section {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    margin-top: -60px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contenedorDeRespuestas {
+    margin-top: 20px;
+}
+
+
+.buttonsContainer {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+@media (max-width: 690px) {
+    .nes-squirtle {
+        display: none;
+    }
+    .buttonsContainer {
+        flex-direction: column;
+    }
+    .nes-btn.is-error {
+        margin-top: 20px;
+    }
 }
