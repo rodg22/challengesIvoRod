@@ -19,6 +19,7 @@ export const RandomPokemon = () => {
         image,
         name,
       });
+      setFilter("withFilter");
       return {
         pokes,
       };
@@ -37,6 +38,7 @@ export const RandomPokemon = () => {
   const showPokemon = () => {
     if (search === pokes.name.trim()) {
       setFilter("withoutFilter");
+      setSearch("");
     } else {
       setFilter("withFilter");
     }
