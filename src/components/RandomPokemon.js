@@ -3,6 +3,9 @@ import { getPokemons } from "../helper/allPokemons.ts";
 import "./RandomPokemon.css";
 
 export const RandomPokemon = () => {
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("withFilter");
+
   const [pokes, setPokes] = useState({
     id: 4,
     image:
@@ -22,12 +25,40 @@ export const RandomPokemon = () => {
     });
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+    showPokemon();
+    return {
+      search,
+    };
+  };
+
+  const showPokemon = () => {
+    if (search === pokes.name.trim()) {
+      setFilter("withoutFilter");
+    } else {
+      setFilter("withFilter");
+    }
+  };
+
   return (
     <>
       <div className="container">
         <h1>{pokes.id}</h1>
         <h2>{pokes.name}</h2>
-        <img src={pokes.image} alt="imagen pokemon" />
+        <div className="imgContainer">
+          <img src={pokes.image} alt="imagen pokemon" className={filter} />
+        </div>
+        <form onSubmit={handleSearch}>
+          <input
+            onChange={handleSearch}
+            text="text"
+            placeholder="Escribi el pokemon en minuscula"
+            value={search}
+          ></input>
+        </form>
+        <br />
         <button
           onClick={handleChange}
           type="button"
