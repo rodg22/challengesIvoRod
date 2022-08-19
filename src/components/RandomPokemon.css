@@ -120,3 +120,7 @@ section {
         margin-top: 20px;
     }
 }
+
+.spanDisplayNone{
+    display: none;
+}

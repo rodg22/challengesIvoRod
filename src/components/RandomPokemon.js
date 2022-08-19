@@ -7,14 +7,37 @@ export const RandomPokemon = () => {
   const [filter, setFilter] = useState("withFilter");
   const [showTitle, setShowtTitle] = useState("titleDisplayNone");
   const [showid, setShowtId] = useState("idDisplayNone");
-  const [contador, setContador] = useState(0);
-  const [contadorIncorrectas, setContadorIncorrectas] = useState(0);
+  const [contador, setContador] = useState(
+    window.localStorage.getItem("contador")
+  );
+  const [contadorIncorrectas, setContadorIncorrectas] = useState(
+    window.localStorage.getItem("contadorIncorrectas")
+  );
+
   const [pokes, setPokes] = useState({
     id: 4,
     image:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
     name: "charmander",
   });
+
+  const setLocalStorage = (value) => {
+    try {
+      setContador(contador + 1);
+      window.localStorage.setItem("contador", value);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const setLocalStorageIncorrectas = (value) => {
+    try {
+      setContadorIncorrectas(contadorIncorrectas + 1);
+      window.localStorage.setItem("contadorIncorrectas", value);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleChange = (e) => {
     getPokemons.random().then(({ id, image, name }) => {
@@ -47,12 +70,12 @@ export const RandomPokemon = () => {
       setSearch("");
       setShowtTitle("");
       setShowtId("");
-      setContador(contador + 1);
+      setLocalStorage(contador + 1);
     } else {
       e.preventDefault();
       setFilter("withFilter");
       setSearch("");
-      setContadorIncorrectas(contadorIncorrectas + 1);
+      setLocalStorageIncorrectas(contadorIncorrectas + 1);
     }
   };
 
