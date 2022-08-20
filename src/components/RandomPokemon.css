@@ -1,5 +1,6 @@
 body {
     margin-top: 100px;
+    background-color: lightgoldenrodyellow;
 }
 
 
@@ -89,7 +90,7 @@ section {
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
-    margin-top: -60px;
+    margin-top: -20px;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
@@ -123,4 +124,12 @@ section {
 
 .spanDisplayNone{
     display: none;
+}
+
+
+.song {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
 }

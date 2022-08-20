@@ -10,7 +10,7 @@ const Header = () => {
       </section>
 
       <h1>
-        <span className="nes-text is-primary">Quien es este Pokemon?</span>
+        <span className="nes-text is-primary">Quién es este Pokemon?</span>
       </h1>
     </>
   );
