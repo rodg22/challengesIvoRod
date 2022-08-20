@@ -121,9 +121,16 @@ export const RandomPokemon = () => {
             onChange={handleSearch}
             id="name_field"
             text="text"
-            placeholder="Escribí el nombre del Pokemon"
+            placeholder="Nombre del Pokemon"
             value={search}
           ></input>
+          <button
+            onClick={showPokemon}
+            type="button"
+            className="nes-btn is-success"
+          >
+            Search
+          </button>
         </form>
         <br />
         <div className="buttonsContainer">
