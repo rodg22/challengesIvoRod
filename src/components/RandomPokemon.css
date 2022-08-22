@@ -66,6 +66,11 @@ form {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
+    display: flex;
+}
+
+form button {
+    width: 20%;
 }
 
 
@@ -132,4 +137,52 @@ section {
     justify-content: center;
     margin-top: 30px;
     margin-bottom: 40px;
+}
+
+
+.buttonPlay {
+    width: 80px;
+}
+
+/* .swhowPlay {
+
+} */
+
+.notShowPlay {
+    display: none;
+}
+
+.notShowPause {
+    display: none;
+}
+
+.swhoPause {
+    display: block;
+}
+
+.showPlay{
+    display: block;
+}
+
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    form {
+        width: auto;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+
+.nonNextPokemon {
+    display: none;
+}
+
+.nextPokemon {
+    display: block;
 }

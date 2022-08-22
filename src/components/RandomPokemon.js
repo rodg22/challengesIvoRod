@@ -2,6 +2,13 @@ import { useState } from "react";
 import { getPokemons } from "../helper/allPokemons.ts";
 import "./RandomPokemon.css";
 import ReactHowler from "react-howler";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMagnifyingGlass,
+  faPlay,
+  faPause,
+} from "@fortawesome/free-solid-svg-icons";
+import swal from "sweetalert";
 
 import pokemon from "../assets/pokemon.mp3";
 
@@ -11,12 +18,25 @@ export const RandomPokemon = () => {
   const [showTitle, setShowtTitle] = useState("titleDisplayNone");
   const [showid, setShowtId] = useState("idDisplayNone");
   const [option, setOption] = useState(false);
-  const [contador, setContador] = useState(
-    window.localStorage.getItem("contador")
-  );
-  const [contadorIncorrectas, setContadorIncorrectas] = useState(
+  const [play, setPlay] = useState("");
+  const [pause, setPause] = useState("notShowPause");
+  const [contadorBoton, setContadorBoton] = useState(0);
+  const [firstPushAlert, setFirstPushAlert] = useState(false);
+  const [getStorage] = useState(window.localStorage.getItem("contador"));
+  const [getStorageIncorrectas] = useState(
     window.localStorage.getItem("contadorIncorrectas")
   );
+  const [contador, setContador] = useState(
+    getStorage > 0 ? parseInt(getStorage) : 0
+  );
+
+  const [contadorIncorrectas, setContadorIncorrectas] = useState(
+    getStorageIncorrectas > 0 ? parseInt(getStorageIncorrectas) : 0
+  );
+
+  const [disabled, setDisabled] = useState(false);
+
+  const [addClass, setAddClass] = useState("nonNextPokemon");
 
   const [pokes, setPokes] = useState({
     id: 4,
@@ -50,9 +70,27 @@ export const RandomPokemon = () => {
         image,
         name,
       });
+      if (!firstPushAlert && addClass === "nonNextPokemon" && contador <= 1) {
+        swal({
+          title: "Advertencia, este cartel te saldrá solo está vez!",
+          text: "Recordá que si cambias de pokemons 3 veces sin intentar ninguna respuesta, se te contará 1 respuesta incorrecta",
+          icon: "warning",
+          button: "aceptar",
+        });
+        setFirstPushAlert(true);
+      }
       setFilter("withFilter");
       setShowtTitle("titleDisplayNone");
       setShowtId("idDisplayNone");
+      setDisabled(false);
+      setContadorBoton(contadorBoton + 1);
+      setAddClass("nonNextPokemon");
+
+      if (contadorBoton >= 2) {
+        setLocalStorageIncorrectas(contadorIncorrectas + 1);
+        setContadorBoton(0);
+      } else {
+      }
       return {
         pokes,
       };
@@ -69,12 +107,23 @@ export const RandomPokemon = () => {
 
   const showPokemon = (e) => {
     e.preventDefault();
-    if (search.toLowerCase() === pokes.name || search.toLowerCase === "") {
+    if (search.toLowerCase() === pokes.name) {
       setFilter("withoutFilter");
       setSearch("");
       setShowtTitle("");
       setShowtId("");
       setLocalStorage(contador + 1);
+      setDisabled(true);
+      setFirstPushAlert(false);
+      setAddClass("nextPokemon");
+    } else if (search === "") {
+      swal({
+        title: "Por favor ingresá el nombre de algún pokemon",
+        text: "",
+        icon: "warning",
+        button: "aceptar",
+      });
+      setSearch("");
     } else {
       e.preventDefault();
       setFilter("withFilter");
@@ -91,12 +140,21 @@ export const RandomPokemon = () => {
     setShowtTitle("titleDisplayNone");
     setShowtId("idDisplayNone");
     setFilter("withFilter");
+    setDisabled(false);
+    setFirstPushAlert(true);
+    setAddClass("nonNextPokemon");
+    localStorage.clear();
   };
 
   const onPlay = () => {
     if (option === true) {
+      setPause("swhoPause");
       setOption(false);
+      setPause("notShowPause");
+      setPlay("showPlay");
     } else {
+      setPlay("notShowPlay");
+      setPause("");
       setOption(true);
     }
   };
@@ -117,13 +175,21 @@ export const RandomPokemon = () => {
         </div>
         <form onSubmit={showPokemon} autoComplete="off">
           <input
-            className="nes-input"
+            className="nes-inputs"
             onChange={handleSearch}
             id="name_field"
             text="text"
-            placeholder="Escribí el nombre del Pokemon"
+            placeholder="Nombre del Pokemon"
             value={search}
+            disabled={disabled}
           ></input>
+          <button
+            onClick={showPokemon}
+            type="button"
+            className="nes-btn is-success"
+          >
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
         </form>
         <br />
         <div className="buttonsContainer">
@@ -132,7 +198,14 @@ export const RandomPokemon = () => {
             type="button"
             className="nes-btn is-primary"
           >
-            Cambiar Pokemon
+            <span
+              className={
+                addClass === "nonNextPokemon" ? "nextPokemon" : "nonNextPokemon"
+              }
+            >
+              Cambiar Pokemon
+            </span>
+            <span className={addClass}>Siguiente Pokemon</span>
           </button>
           <button
             onClick={handleReset}
@@ -157,10 +230,13 @@ export const RandomPokemon = () => {
       <button
         onClick={onPlay}
         type="button"
-        className="nes-btn is-success song"
+        className="nes-btn is-success song buttonPlay"
       >
         <ReactHowler src={pokemon} playing={option} />
-        With Music?
+
+        <FontAwesomeIcon icon={faPlay} className={play} />
+
+        <FontAwesomeIcon icon={faPause} className={pause} />
       </button>
     </>
   );
