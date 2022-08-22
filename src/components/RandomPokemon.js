@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getPokemons } from "../helper/allPokemons.ts";
 import "./RandomPokemon.css";
 import ReactHowler from "react-howler";
@@ -62,6 +62,34 @@ export const RandomPokemon = () => {
       console.error(error);
     }
   };
+
+  // REZISE DE LA RESOLUCiÓN DE LA PÁGINA
+
+  // function useWindowSize() {
+  //   const [size, setSize] = useState([0, 0]);
+  //   useEffect(() => {
+  //     function updateSize() {
+  //       setSize([window.innerWidth, window.innerHeight]);
+  //     }
+  //     window.addEventListener("resize", updateSize);
+  //     updateSize();
+  //     return () => window.removeEventListener("resize", updateSize);
+  //   }, []);
+  //   return size;
+  // }
+
+  // function ShowWindowDimensions(props) {
+  //   const [width, height] = useWindowSize();
+  //   if (width < 1024) console.log("pequeña");
+  //   else if (width < 1280) console.log("Mediana");
+  //   else console.log("Grande");
+  //   return (
+  //     <span>
+  //       Window size: {width} x {height}
+  //     </span>
+  //   );
+  // }
+  // ShowWindowDimensions();
 
   const handleChange = (e) => {
     getPokemons.random().then(({ id, image, name }) => {
@@ -144,6 +172,7 @@ export const RandomPokemon = () => {
     setFirstPushAlert(true);
     setAddClass("nonNextPokemon");
     localStorage.clear();
+    window.location.reload();
   };
 
   const onPlay = () => {
@@ -158,6 +187,27 @@ export const RandomPokemon = () => {
       setOption(true);
     }
   };
+
+  useEffect(() => {
+    if (contador === 0) {
+      setPokes({
+        id: 4,
+        image:
+          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+        name: "charmander",
+      });
+    } else {
+      getPokemons.random().then(({ id, image, name }) => {
+        setPokes({
+          id,
+          image,
+          name,
+        });
+      });
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
