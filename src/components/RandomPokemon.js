@@ -11,6 +11,7 @@ import {
 import swal from "sweetalert";
 
 import pokemon from "../assets/pokemon.mp3";
+import SearchBar from "./SearchBar/SearchBar";
 
 export const RandomPokemon = () => {
   const [search, setSearch] = useState("");
@@ -63,33 +64,6 @@ export const RandomPokemon = () => {
     }
   };
 
-  // REZISE DE LA RESOLUCiÓN DE LA PÁGINA
-
-  // function useWindowSize() {
-  //   const [size, setSize] = useState([0, 0]);
-  //   useEffect(() => {
-  //     function updateSize() {
-  //       setSize([window.innerWidth, window.innerHeight]);
-  //     }
-  //     window.addEventListener("resize", updateSize);
-  //     updateSize();
-  //     return () => window.removeEventListener("resize", updateSize);
-  //   }, []);
-  //   return size;
-  // }
-
-  // function ShowWindowDimensions(props) {
-  //   const [width, height] = useWindowSize();
-  //   if (width < 1024) console.log("pequeña");
-  //   else if (width < 1280) console.log("Mediana");
-  //   else console.log("Grande");
-  //   return (
-  //     <span>
-  //       Window size: {width} x {height}
-  //     </span>
-  //   );
-  // }
-  // ShowWindowDimensions();
 
   const handleChange = (e) => {
     getPokemons.random().then(({ id, image, name }) => {
@@ -125,13 +99,6 @@ export const RandomPokemon = () => {
     });
   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setSearch(e.target.value);
-    return {
-      search,
-    };
-  };
 
   const showPokemon = (e) => {
     e.preventDefault();
@@ -176,8 +143,8 @@ export const RandomPokemon = () => {
   };
 
   const onPlay = () => {
-    if (option === true) {
-      setPause("swhoPause");
+    if (option) {
+      setPause("sPause");
       setOption(false);
       setPause("notShowPause");
       setPlay("showPlay");
@@ -189,22 +156,24 @@ export const RandomPokemon = () => {
   };
 
   useEffect(() => {
-    if (contador === 0) {
+    // si contador está en 0 ES FALSE
+     contador ? 
+     getPokemons.random().then(({ id, image, name }) => {
       setPokes({
-        id: 4,
-        image:
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-        name: "charmander",
+        id,
+        image,
+        name,
       });
-    } else {
-      getPokemons.random().then(({ id, image, name }) => {
-        setPokes({
-          id,
-          image,
-          name,
-        });
-      });
-    }
+    })
+     : 
+     setPokes({
+      id: 4,
+      image:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+      name: "charmander",
+    }) 
+     
+    
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -223,24 +192,7 @@ export const RandomPokemon = () => {
         <div className="imgContainer">
           <img src={pokes.image} alt="imagen pokemon" className={filter} />
         </div>
-        <form onSubmit={showPokemon} autoComplete="off">
-          <input
-            className="nes-inputs"
-            onChange={handleSearch}
-            id="name_field"
-            text="text"
-            placeholder="Nombre del Pokemon"
-            value={search}
-            disabled={disabled}
-          ></input>
-          <button
-            onClick={showPokemon}
-            type="button"
-            className="nes-btn is-success"
-          >
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
-        </form>
+        <SearchBar setSearch={setSearch} search={search} showPokemon={showPokemon} disabled={disabled}/>
         <br />
         <div className="buttonsContainer">
           <button
@@ -288,6 +240,7 @@ export const RandomPokemon = () => {
 
         <FontAwesomeIcon icon={faPause} className={pause} />
       </button>
+     
     </>
   );
 };
