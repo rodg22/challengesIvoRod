@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react";
-import { getPokemons } from "../helper/allPokemons.ts";
+import {getPokemons} from '../../helper/getPokemons.ts';
 import "./RandomPokemon.css";
 import ReactHowler from "react-howler";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faMagnifyingGlass,
   faPlay,
   faPause,
 } from "@fortawesome/free-solid-svg-icons";
 import swal from "sweetalert";
 
-import pokemon from "../assets/pokemon.mp3";
-import SearchBar from "./SearchBar/SearchBar";
-import Title from "./Title";
+import pokemon from "../../assets/pokemon.mp3";
+import SearchBar from "../SearchBar/SearchBar";
+import Title from "../Title";
 
 export const RandomPokemon = () => {
   const [search, setSearch] = useState("");
@@ -247,4 +246,4 @@ export const RandomPokemon = () => {
   );
 };
 
-export default RandomPokemon;
+

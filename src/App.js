@@ -1,4 +1,3 @@
-import Title from "./components/Title";
 import Header from "./components/Header/Header";
 import PagesRoute from "./components/Routes/PagesRoute";
 

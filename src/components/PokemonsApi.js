@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { PokeGrilla } from "./PokeGrilla/PokeGrilla";
-import "./RandomPokemon.css";
+import "../components/Pages/RandomPokemon.css";
 
 export const PokemonsApi = () => {
   const [pokes, setPokes] = useState("");

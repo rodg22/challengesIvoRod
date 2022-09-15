@@ -4,9 +4,12 @@ import './HomeScreen.css'
 export const HomeScreen = () => {
   return (
     <>
+    <div className='containerBackground'>
     <div className='background'>
-    <h1>HomeScreen</h1>
     </div>
+    </div>
+    <div className='overBakcground'></div>
+    <h1 className='title'>Welcome tu PokemonsApp</h1>
     </>
   )
 }

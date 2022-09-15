@@ -13,8 +13,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import { NavLink, Link } from "react-router-dom";
+// import InboxIcon from "@mui/icons-material/MoveToInbox";
+// import MailIcon from "@mui/icons-material/Mail";
+
 
 const drawerWidth = 240;
 
@@ -96,20 +98,26 @@ const HamburgerMenu = ({ open, setOpen }) => {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+
+        <List sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginLeft: 'auto', marginRight: 'auto'}}>
+        <ListItemButton>
+        <NavLink to={'/HomeScreen'}>
+           Home
+        </NavLink>
+        </ListItemButton>
+        <ListItemButton>
+        <NavLink to={'/RandomPokemon'}>
+           Random Pokemon
+        </NavLink>
+        </ListItemButton>
+        <ListItemButton>
+        <NavLink to={'/Tournament'}>
+          Torunament
+        </NavLink>
+        </ListItemButton>
         </List>
         <Divider />
-        <List>
+        {/* <List>
           {["All mail", "Trash", "Spam"].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
@@ -120,7 +128,7 @@ const HamburgerMenu = ({ open, setOpen }) => {
               </ListItemButton>
             </ListItem>
           ))}
-        </List>
+        </List> */}
       </Drawer>
       <Main open={open}>
         <DrawerHeader />

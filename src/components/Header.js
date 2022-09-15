@@ -1,5 +1,5 @@
 import React from "react";
-import "./RandomPokemon.css";
+import "../components/Pages/RandomPokemon.css";
 
 const Header = () => {
   return (
