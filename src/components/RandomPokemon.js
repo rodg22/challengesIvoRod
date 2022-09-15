@@ -12,6 +12,7 @@ import swal from "sweetalert";
 
 import pokemon from "../assets/pokemon.mp3";
 import SearchBar from "./SearchBar/SearchBar";
+import Title from "./Title";
 
 export const RandomPokemon = () => {
   const [search, setSearch] = useState("");
@@ -180,6 +181,7 @@ export const RandomPokemon = () => {
 
   return (
     <>
+    <Title />
       <div className="container">
         <h1 className={showTitle}>
           Felicitaciones, es{" "}
