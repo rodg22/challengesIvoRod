@@ -1,7 +1,7 @@
 import {Pokemon} from "./types";
-import { POKEMON } from "./allPokemons.ts";
+import { POKEMON } from "./allPokemons";
 
-export const getPokemons = async (): Promise<Pokemon> => {
+const getPokemons = async (): Promise<Pokemon> => {
         const id =  Math.round(Math.random() * (POKEMON.length - 1) + 1);
         return {
         id: id,
@@ -10,5 +10,4 @@ export const getPokemons = async (): Promise<Pokemon> => {
         };
     }
 
-
-export default getPokemons
+export default getPokemons;

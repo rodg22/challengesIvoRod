@@ -1,6 +1,7 @@
 import React from 'react'
 import {Routes, Route, Navigate} from 'react-router-dom'
-import {HomeScreen, Tournament, RandomPokemon} from '../Pages/index'
+import {HomeScreen, Tournament} from '../Pages/index'
+import { RandomPokemon } from '../Pages/RandomPokemon'
 
 
 const PagesRoute = () => {
