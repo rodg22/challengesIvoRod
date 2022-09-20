@@ -17,7 +17,6 @@ import { NavLink, Link } from "react-router-dom";
 // import InboxIcon from "@mui/icons-material/MoveToInbox";
 // import MailIcon from "@mui/icons-material/Mail";
 
-
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -99,22 +98,27 @@ const HamburgerMenu = ({ open, setOpen }) => {
         </DrawerHeader>
         <Divider />
 
-        <List sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginLeft: 'auto', marginRight: 'auto'}}>
-        <ListItemButton>
-        <NavLink to={'/HomeScreen'}>
-           Home
-        </NavLink>
-        </ListItemButton>
-        <ListItemButton>
-        <NavLink to={'/RandomPokemon'}>
-           Random Pokemon
-        </NavLink>
-        </ListItemButton>
-        <ListItemButton>
-        <NavLink to={'/Tournament'}>
-          Torunament
-        </NavLink>
-        </ListItemButton>
+        <List
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
+          <ListItemButton>
+            <NavLink to={"/HomeScreen"}>Home</NavLink>
+          </ListItemButton>
+          <ListItemButton>
+            <NavLink to={"/RandomPokemon"}>Random Pokemon</NavLink>
+          </ListItemButton>
+          <ListItemButton>
+            <NavLink to={"/PokeGrid"}>Pokemon Grid</NavLink>
+          </ListItemButton>
+          <ListItemButton>
+            <NavLink to={"/Tournament"}>Tournament</NavLink>
+          </ListItemButton>
         </List>
         <Divider />
         {/* <List>
