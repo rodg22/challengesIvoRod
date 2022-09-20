@@ -1,18 +1,10 @@
 import { useState, useEffect } from "react";
 import { getPokemons } from '../../helper/allPokemons.ts';
 import './RandomPokemon.css';
-import ReactHowler from "react-howler";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMagnifyingGlass,
-  faPlay,
-  faPause,
-} from "@fortawesome/free-solid-svg-icons";
 import swal from "sweetalert";
-
-import pokemon from "../../assets/pokemon.mp3";
 import SearchBar from "../SearchBar/SearchBar";
 import Title from '../Title'
+import OnPlay from "../Events/OnPlay";
 
 
 export const RandomPokemon = () => {
@@ -20,9 +12,7 @@ export const RandomPokemon = () => {
   const [filter, setFilter] = useState("withFilter");
   const [showTitle, setShowtTitle] = useState("titleDisplayNone");
   const [showid, setShowtId] = useState("idDisplayNone");
-  const [option, setOption] = useState(false);
-  const [play, setPlay] = useState("");
-  const [pause, setPause] = useState("notShowPause");
+
   const [contadorBoton, setContadorBoton] = useState(0);
   const [firstPushAlert, setFirstPushAlert] = useState(false);
   const [getStorage] = useState(window.localStorage.getItem("contador"));
@@ -144,18 +134,7 @@ export const RandomPokemon = () => {
     window.location.reload();
   };
 
-  const onPlay = () => {
-    if (option) {
-      setPause("sPause");
-      setOption(false);
-      setPause("notShowPause");
-      setPlay("showPlay");
-    } else {
-      setPlay("notShowPlay");
-      setPause("");
-      setOption(true);
-    }
-  };
+
 
   useEffect(() => {
     // si contador está en 0 ES FALSE
@@ -232,17 +211,7 @@ export const RandomPokemon = () => {
         <h1>{contadorIncorrectas}</h1>
       </div>
 
-      <button
-        onClick={onPlay}
-        type="button"
-        className="nes-btn is-success song buttonPlay"
-      >
-        <ReactHowler src={pokemon} playing={option} />
-
-        <FontAwesomeIcon icon={faPlay} className={play} />
-
-        <FontAwesomeIcon icon={faPause} className={pause} />
-      </button>
+    <OnPlay />
      
     </>
   );
