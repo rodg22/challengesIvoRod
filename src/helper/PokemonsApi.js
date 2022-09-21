@@ -21,7 +21,9 @@ export const PokemonsApi = () => {
             const peticion2 = fetch(url);
             await peticion2.then((resp) => {
               resp.json().then((data) => {
+                console.log(data)
                 setPokeData([...pokeData, data]);
+                console.log(data)
               });
             });
           });

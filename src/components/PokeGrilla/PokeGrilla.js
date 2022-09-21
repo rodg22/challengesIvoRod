@@ -7,8 +7,10 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useState } from "react";
 import { PokemonsApi } from "../../helper/PokemonsApi";
 
-export const PokeGrilla = () => {
+export const PokeGrilla = ({pokes, pokeData}) => {
   const pokemonsData = PokemonsApi();
+
+
   // console.log(pokemonsData);
   // data.stats ? setWidth(data.stats[0].base_stat) : console.log('no hay data')
 
