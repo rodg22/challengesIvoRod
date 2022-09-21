@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { PokeGrilla } from "../components/PokeGrilla/PokeGrilla";
 import "../components/Pages/RandomPokemon.css";
 
-export const PokemonsApi = () => {
+export const PokemonsApi = async() => {
   const [pokes, setPokes] = useState("");
   const [pokeData, setPokeData] = useState([]);
 
@@ -21,9 +21,7 @@ export const PokemonsApi = () => {
             const peticion2 = fetch(url);
             await peticion2.then((resp) => {
               resp.json().then((data) => {
-                console.log(data)
-                setPokeData([...pokeData, data]);
-                console.log(data)
+                setPokeData((pokeData) => [...pokeData, data]);
               });
             });
           });
@@ -41,7 +39,7 @@ export const PokemonsApi = () => {
         });
       })
       .catch(console.warn);
-    console.log("useEffect", pokeData);
+
   }, []);
   console.log(pokeData);
   return [pokes, pokeData];
