@@ -41,6 +41,7 @@
     border: solid 1px;
     text-align: center;
     width: 100px;
+    height: 40px;
 }
 
 
@@ -56,6 +57,7 @@
     border: solid 1px;
     text-align: center;
     width: 100px;
+    height: 40px;
 }
 
 
@@ -65,4 +67,6 @@
     top: 0;
     right: 0;
     justify-content: right;
+    margin-top: 5px;
+    height: 45px;
 }

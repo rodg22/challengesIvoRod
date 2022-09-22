@@ -15,6 +15,7 @@ import { flexbox } from "@mui/system";
 export const PokeGrilla = ({ pokeData }) => {
   let pokemonsData = PokemonsApi();
 
+
   pokemonsData.sort((a, b) => {
     return a.id - b.id;
   });
@@ -41,60 +42,59 @@ export const PokeGrilla = ({ pokeData }) => {
                   <Typography gutterBottom variant="h5" component="div">
                     {name[0].toUpperCase() + name.substring(1)}
                   </Typography>
-                    {types.map((type) => {
-                      return (
-                        <>
-<div className="contenedorSpans">
-
-                  <div
-                    className="type"
-                    style={{
-                      backgroundColor:
-                        `${types[0].type.name}` === "grass"
-                          ? "lightGreen"
-                          : `${types[0].type.name}` === "fire"
-                          ? "#ff6c3e"
-                          : `${types[0].type.name}` === "water"
-                          ? "rgb(25, 118, 210)"
-                          : `${types[0].type.name}` === "normal"
-                          ? "lightgray"
-                          : `${types[0].type.name}` === "bug"
-                          ? "#c1c700"
-                          : "black",
-                    }}
-                  >
-                     { types[0].type.name.toUpperCase()}
-                  </div>
-                  <div className="secondType"
-                  style={{
-          
-                      backgroundColor:
-                        `${types[1]?.type.name}` === "grass"
-                          ? "lightGreen"
-                          : `${types[1]?.type.name}` === "fire"
-                          ? "#ff6c3e"
-                          : `${types[1]?.type.name}` === "water"
-                          ? "rgb(25, 118, 210)"
-                          : `${types[1]?.type.name}` === "normal"
-                          ? "lightgray"
-                          : `${types[1]?.type.name}` === "bug"
-                          ? "#c1c700"
-                          :`${types[1]?.type.name}` === "poison"
-                          ? "purple"
-                          :`${types[1]?.type.name}` === "flying"
-                          ? 'gray'
-                          : "white",
-                    }}>
-                  { types[1]?.type.name.toUpperCase()}
-                  </div>
-                      </div>
-                        </>
-
-                      )
-                      
-                    })
-                    }
-                    {/* [0].type.name.toUpperCase()} */}
+              
+                  {types.map((type) => {
+                    return (
+                      <>
+                        <div className="contenedorSpans">
+                          <div
+                            className="type"
+                            style={{
+                              backgroundColor:
+                                `${types[0].type.name}` === "grass"
+                                  ? "lightGreen"
+                                  : `${types[0].type.name}` === "fire"
+                                  ? "#ff6c3e"
+                                  : `${types[0].type.name}` === "water"
+                                  ? "rgb(25, 118, 210)"
+                                  : `${types[0].type.name}` === "normal"
+                                  ? "lightgray"
+                                  : `${types[0].type.name}` === "bug"
+                                  ? "#c1c700"
+                                  : "white",
+                            }}
+                          >
+                            {types[0].type.name.toUpperCase()}
+                          </div>
+                            
+                          <div
+                            className="secondType"
+                            style={{
+                              backgroundColor:
+                                `${types[1]?.type.name}` === "grass"
+                                  ? "lightGreen"
+                                  : `${types[1]?.type.name}` === "fire"
+                                  ? "#ff6c3e"
+                                  : `${types[1]?.type.name}` === "water"
+                                  ? "rgb(25, 118, 210)"
+                                  : `${types[1]?.type.name}` === "normal"
+                                  ? "lightgray"
+                                  : `${types[1]?.type.name}` === "bug"
+                                  ? "#c1c700"
+                                  : `${types[1]?.type.name}` === "poison"
+                                  ? "purple"
+                                  : `${types[1]?.type.name}` === "flying"
+                                  ? "gray"
+                                  : 'white',
+                            }}
+                          >
+                            {types[1]?.type.name.toUpperCase()}
+                          </div>
+                        </div>
+                      </>
+                    );
+                  })}
+                  {/* [0].type.name.toUpperCase()} */}
                   <ul
                     style={{
                       display: "flex",
