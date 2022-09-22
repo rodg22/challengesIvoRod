@@ -29,6 +29,9 @@
     margin-top: 50px;
 }
 
+.css-h93ljk-MuiTypography-root {
+    text-align: center;
+}
 
 
 .type {
@@ -41,7 +44,7 @@
     border: solid 1px;
     text-align: center;
     width: 100px;
-    height: 40px;
+    height: 20px;
 }
 
 
@@ -57,7 +60,6 @@
     border: solid 1px;
     text-align: center;
     width: 100px;
-    height: 40px;
 }
 
 
@@ -68,5 +70,15 @@
     right: 0;
     justify-content: right;
     margin-top: 5px;
-    height: 45px;
+    margin-right: 10px;
+    height: 20px;
+}
+
+.typeText {
+    margin-top: -12px;
+}
+
+.borderDiv {
+    border: solid grey 1px;
+    margin-bottom: 8px;
 }

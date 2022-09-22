@@ -15,7 +15,6 @@ import { flexbox } from "@mui/system";
 export const PokeGrilla = ({ pokeData }) => {
   let pokemonsData = PokemonsApi();
 
-
   pokemonsData.sort((a, b) => {
     return a.id - b.id;
   });
@@ -42,59 +41,70 @@ export const PokeGrilla = ({ pokeData }) => {
                   <Typography gutterBottom variant="h5" component="div">
                     {name[0].toUpperCase() + name.substring(1)}
                   </Typography>
-              
-                  {types.map((type) => {
-                    return (
-                      <>
-                        <div className="contenedorSpans">
-                          <div
-                            className="type"
-                            style={{
-                              backgroundColor:
-                                `${types[0].type.name}` === "grass"
-                                  ? "lightGreen"
-                                  : `${types[0].type.name}` === "fire"
-                                  ? "#ff6c3e"
-                                  : `${types[0].type.name}` === "water"
-                                  ? "rgb(25, 118, 210)"
-                                  : `${types[0].type.name}` === "normal"
-                                  ? "lightgray"
-                                  : `${types[0].type.name}` === "bug"
-                                  ? "#c1c700"
-                                  : "white",
-                            }}
-                          >
-                            {types[0].type.name.toUpperCase()}
-                          </div>
-                            
-                          <div
-                            className="secondType"
-                            style={{
-                              backgroundColor:
-                                `${types[1]?.type.name}` === "grass"
-                                  ? "lightGreen"
-                                  : `${types[1]?.type.name}` === "fire"
-                                  ? "#ff6c3e"
-                                  : `${types[1]?.type.name}` === "water"
-                                  ? "rgb(25, 118, 210)"
-                                  : `${types[1]?.type.name}` === "normal"
-                                  ? "lightgray"
-                                  : `${types[1]?.type.name}` === "bug"
-                                  ? "#c1c700"
-                                  : `${types[1]?.type.name}` === "poison"
-                                  ? "purple"
-                                  : `${types[1]?.type.name}` === "flying"
-                                  ? "gray"
-                                  : 'white',
-                            }}
-                          >
-                            {types[1]?.type.name.toUpperCase()}
-                          </div>
-                        </div>
-                      </>
-                    );
-                  })}
-                  {/* [0].type.name.toUpperCase()} */}
+
+                  <div className="contenedorSpans">
+                    {types.length > 1
+                      ? types.map(({ type }) => {
+                          console.log(type.name);
+                          return (
+                            <>
+                              <div
+                                className="type"
+                                style={{
+                                  backgroundColor:
+                                    `${type.name}` === "grass"
+                                      ? "lightGreen"
+                                      : `${type.name}` === "fire"
+                                      ? "#ff6c3e"
+                                      : `${type.name}` === "water"
+                                      ? "rgb(25, 118, 210)"
+                                      : `${type.name}` === "normal"
+                                      ? "lightgray"
+                                      : `${type.name}` === "bug"
+                                      ? "#c1c700"
+                                      : `${types[1]?.type.name}` === "poison"
+                                      ? "purple"
+                                      : `${types[1]?.type.name}` === "flying"
+                                      ? "gray"
+                                      : "white",
+                                }}
+                              >
+                                <p className="typeText">{type.name.toUpperCase()}</p>
+                              </div>
+                            </>
+                          );
+                        })
+                      : types.map(({ type }) => {
+                          console.log(type.name, "un solo tipo");
+                          return (
+                            <div
+                              className="type"
+                              style={{
+                                backgroundColor:
+                                  `${type.name}` === "grass"
+                                    ? "lightGreen"
+                                    : `${type.name}` === "fire"
+                                    ? "#ff6c3e"
+                                    : `${type.name}` === "water"
+                                    ? "rgb(25, 118, 210)"
+                                    : `${type.name}` === "normal"
+                                    ? "lightgray"
+                                    : `${type.name}` === "bug"
+                                    ? "#c1c700"
+                                    : `${types[1]?.type.name}` === "poison"
+                                    ? "purple"
+                                    : `${types[1]?.type.name}` === "flying"
+                                    ? "gray"
+                                    : "white",
+                              }}
+                              
+                            >
+                              <p className="typeText">{type.name.toUpperCase()}</p>
+                            </div>
+                          );
+                        })}
+                  </div>
+
                   <ul
                     style={{
                       display: "flex",
@@ -107,13 +117,12 @@ export const PokeGrilla = ({ pokeData }) => {
                       return (
                         <li className="list" key={index}>
                           {stat.stat.name.toUpperCase()}
-                          <div
+                          <div className="borderDiv"
                             style={{
                               backgroundColor: "white",
                               width: 255,
                               marginLeft: 0,
                               borderRadius: 10,
-                              border: "solid",
                             }}
                           >
                             <div
@@ -122,6 +131,8 @@ export const PokeGrilla = ({ pokeData }) => {
                                 width: `${stat["base_stat"]}px`,
                                 marginLeft: 0,
                                 color: "white",
+                                borderRadius: 10,
+                                marginLeft: -1
                               }}
                             >
                               {stat["base_stat"]}
