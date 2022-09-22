@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { HomeScreen, Tournament } from "../Pages/index";
 import { RandomPokemon } from "../Pages/RandomPokemon";
-import { PokeGrilla } from "../PokeGrilla/PokeGrilla";
+import { PokeGrilla } from "../Pages/PokeGrilla";
 
 const PagesRoute = () => {
   return (

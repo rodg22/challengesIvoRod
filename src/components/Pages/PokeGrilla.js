@@ -3,11 +3,9 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
-import { useState } from "react";
+import { CardActionArea } from "@mui/material";
 import { PokemonsApi } from "../../helper/PokemonsApi";
 import "./PokeGrilla.css";
-import { flexbox } from "@mui/system";
 
 /// TODO PAGINATION
 /// TODO QUE NO SE VUELVA A LLAMAR LA API CUANDO SE REALIZA UN CAMBIO

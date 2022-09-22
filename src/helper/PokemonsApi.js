@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { PokeGrilla } from "../components/PokeGrilla/PokeGrilla";
+import { PokeGrilla } from "../components/Pages/PokeGrilla";
 import "../components/Pages/RandomPokemon.css";
 
 export const PokemonsApi = () => {
