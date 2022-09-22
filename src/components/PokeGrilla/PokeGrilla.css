@@ -3,7 +3,8 @@
 .list {
     color: grey;
     width: 100%;
-    margin: none
+    margin: none;
+    text-align:center;
 }
 
 

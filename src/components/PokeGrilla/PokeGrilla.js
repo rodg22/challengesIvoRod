@@ -51,8 +51,8 @@ export const PokeGrilla = ({ pokeData }) => {
                   return (
                     <li className="list" key={index}>
                       {stat.stat.name.toUpperCase()}
-                      <div style={{backgroundColor: 'grey', width: 255, marginLeft: 0}}>
-                      <div style={{backgroundColor: 'lightGreen', width: `${stat['base_stat']}px`, marginLeft: 0}}>
+                      <div style={{backgroundColor: 'white', width: 255, marginLeft: 0, borderRadius: 10, border: 'solid'}}>
+                      <div style={{backgroundColor: '#1976d2', width: `${stat['base_stat']}px`, marginLeft: 0, color: 'white'}}>
                        {stat['base_stat']}
                       </div>
                       </div>
