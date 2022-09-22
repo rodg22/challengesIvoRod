@@ -7,6 +7,7 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useState } from "react";
 import { PokemonsApi } from "../../helper/PokemonsApi";
 import './PokeGrilla.css'
+import { flexbox } from "@mui/system";
 
 
 
@@ -17,11 +18,13 @@ import './PokeGrilla.css'
 
 export const PokeGrilla = ({ pokeData }) => {
   let pokemonsData = PokemonsApi()
-
+  
   pokemonsData.sort((a, b) => {
-      return a.id - b.id
+    return a.id - b.id
   })
-
+  
+  const urt = 50
+  
 
   return (
     <>
@@ -30,7 +33,7 @@ export const PokeGrilla = ({ pokeData }) => {
         {pokemonsData.map(({ name, stats, sprites, id }) => {
           return(
 
-          <Card key={id} sx={{ maxWidth: 345 }}>
+          <Card className="divGridDiv" key={id} sx={{ maxWidth: 500, minWidth: 300 }}>
             <CardActionArea>
               <CardMedia
                 component="img"
@@ -40,14 +43,19 @@ export const PokeGrilla = ({ pokeData }) => {
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {name}
+                  {name[0].toUpperCase() + name.substring(1)}
                 </Typography>
-                <ul>
+                <ul style={{display: 'flex', justifyContent: "flex-start", flexDirection: 'column', padding: 'initial'}}>
                 {
                 stats.map((stat, index) => {
                   return (
                     <li className="list" key={index}>
-                      {stat.stat.name} {stat['base_stat']}
+                      {stat.stat.name.toUpperCase()}
+                      <div style={{backgroundColor: 'grey', width: 255, marginLeft: 0}}>
+                      <div style={{backgroundColor: 'lightGreen', width: `${stat['base_stat']}px`, marginLeft: 0}}>
+                       {stat['base_stat']}
+                      </div>
+                      </div>
                     </li>
                   )
                 })

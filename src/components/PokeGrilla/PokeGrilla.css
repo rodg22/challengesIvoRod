@@ -1,7 +1,9 @@
 
 
 .list {
-    color: grey
+    color: grey;
+    width: 100%;
+    margin: none
 }
 
 
@@ -15,7 +17,12 @@
 }
 
 
-.divGrid div {
+.divGridDiv {
     margin: 5px;
     margin-top: 10px
+}
+
+
+.css-o69gx8-MuiCardMedia-root {
+    width: 60% !important;
 }
