@@ -25,7 +25,7 @@ export const PokeGrilla = ({ pokeData }) => {
 
   return (
     <>
-      <h1>HOla Mundo</h1>
+      <h1>POKEGRID</h1>
       <div className="divGrid">
         {pokemonsData.map(({ name, stats, sprites, id }) => {
           return(
