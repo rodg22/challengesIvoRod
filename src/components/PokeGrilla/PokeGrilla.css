@@ -26,4 +26,43 @@
 
 .css-o69gx8-MuiCardMedia-root {
     width: 60% !important;
+    margin-top: 50px;
+}
+
+
+
+.type {
+    padding: 10px;
+    border-radius: 20px;
+    top: 5px;
+    right: 3px;
+    color: white;
+    font-weight: bold;
+    border: solid 1px;
+    text-align: center;
+    width: 100px;
+}
+
+
+
+.secondType {
+    padding: 10px;
+    border-radius: 20px;
+    top: 5px;
+    right: 50px;
+    margin-right: 5px;
+    color: white;
+    font-weight: bold;
+    border: solid 1px;
+    text-align: center;
+    width: 100px;
+}
+
+
+.contenedorSpans {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    justify-content: right;
 }
