@@ -6,8 +6,7 @@ function App() {
     <>
       <Header />
       <PagesRoute />
-      {/* <PokemonsApi /> */}
-    
+   
     </>
   );
 }
