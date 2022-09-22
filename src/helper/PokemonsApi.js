@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { PokeGrilla } from "../components/PokeGrilla/PokeGrilla";
 import "../components/Pages/RandomPokemon.css";
 
-export const PokemonsApi = async() => {
+export const PokemonsApi = () => {
   const [pokes, setPokes] = useState("");
   const [pokeData, setPokeData] = useState([]);
 
@@ -17,39 +17,20 @@ export const PokemonsApi = async() => {
       .then((resp) => {
         resp.json().then((data) => {
           const { results: resultados } = data;
-          resultados.map(async ({ url }) => {
+          resultados.map(({ url }) => {
             const peticion2 = fetch(url);
-            await peticion2.then((resp) => {
+            peticion2.then((resp) => {
               resp.json().then((data) => {
                 setPokeData((pokeData) => [...pokeData, data]);
               });
             });
           });
-          // setData(data);
-          // setPokes(data.sprites.other["official-artwork"].front_default);
-
-          // console.log(data);
-          // console.log(pokes);
-
-          // //   const {
-          // //     sprites: { other },
-          // //   } = data;
-          // //   setPokes(other["official-artwork"].front_default)
-          // return data;
         });
       })
       .catch(console.warn);
 
   }, []);
   console.log(pokeData);
-  return [pokes, pokeData];
+  return pokeData;
 };
 
-// return (
-//   <>
-//     <div className="getPokemonFromApi">
-//       <img src={pokes}></img>
-//     </div>
-//     <PokeGrilla data={data} pokes={pokes} />
-//   </>
-// );
