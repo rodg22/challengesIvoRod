@@ -36,14 +36,13 @@ export const PokeGrilla = ({ pokeData }) => {
                   alt={name}
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography style={{fontWeight: 'bold'}} gutterBottom variant="h5" component="div">
                     {name[0].toUpperCase() + name.substring(1)}
                   </Typography>
 
                   <div className="contenedorSpans">
                     {types.length > 1
                       ? types.map(({ type }) => {
-                          console.log(type.name);
                           return (
                             <>
                               <div
@@ -60,14 +59,16 @@ export const PokeGrilla = ({ pokeData }) => {
                                       ? "lightgray"
                                       : `${type.name}` === "bug"
                                       ? "#c1c700"
-                                      : `${types[1]?.type.name}` === "poison"
+                                      : `${type.name}` === "poison"
                                       ? "purple"
-                                      : `${types[1]?.type.name}` === "flying"
+                                      : `${type.name}` === "flying"
                                       ? "gray"
                                       : "white",
                                 }}
                               >
-                                <p className="typeText">{type.name.toUpperCase()}</p>
+                                <p className="typeText">
+                                  {type.name.toUpperCase()}
+                                </p>
                               </div>
                             </>
                           );
@@ -89,15 +90,16 @@ export const PokeGrilla = ({ pokeData }) => {
                                     ? "lightgray"
                                     : `${type.name}` === "bug"
                                     ? "#c1c700"
-                                    : `${types[1]?.type.name}` === "poison"
+                                    : `${type.name}` === "poison"
                                     ? "purple"
-                                    : `${types[1]?.type.name}` === "flying"
+                                    : `${type.name}` === "flying"
                                     ? "gray"
                                     : "white",
                               }}
-                              
                             >
-                              <p className="typeText">{type.name.toUpperCase()}</p>
+                              <p className="typeText">
+                                {type.name.toUpperCase()}
+                              </p>
                             </div>
                           );
                         })}
@@ -115,7 +117,8 @@ export const PokeGrilla = ({ pokeData }) => {
                       return (
                         <li className="list" key={index}>
                           {stat.stat.name.toUpperCase()}
-                          <div className="borderDiv"
+                          <div
+                            className="borderDiv"
                             style={{
                               backgroundColor: "white",
                               width: 255,
@@ -130,10 +133,10 @@ export const PokeGrilla = ({ pokeData }) => {
                                 marginLeft: 0,
                                 color: "white",
                                 borderRadius: 10,
-                                marginLeft: -1
+                                marginLeft: -1,
                               }}
                             >
-                              {stat["base_stat"]}
+                              <span style={{fontSize: `${stat["base_stat"]}` <= 25 && 12 }}>{stat["base_stat"]}</span>
                             </div>
                           </div>
                         </li>

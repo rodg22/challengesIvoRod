@@ -6,7 +6,10 @@ function App() {
     <>
       <Header />
       <PagesRoute />
+<<<<<<< HEAD
    
+=======
+>>>>>>> ad06388c2077a91d4b91ee0c628431776fdb306b
     </>
   );
 }

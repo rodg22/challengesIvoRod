@@ -17,7 +17,6 @@ const SearchBar = ({setSearch, search, showPokemon, disabled}) => {
       };
 
 
-
   return (
     <>
     <form 
