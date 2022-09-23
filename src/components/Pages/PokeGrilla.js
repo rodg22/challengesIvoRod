@@ -67,7 +67,9 @@ export const PokeGrilla = ({ pokeData }) => {
                                       : "white",
                                 }}
                               >
-                                <p className="typeText">{type.name.toUpperCase()}</p>
+                                <p className="typeText">
+                                  {type.name.toUpperCase()}
+                                </p>
                               </div>
                             </>
                           );
@@ -95,9 +97,10 @@ export const PokeGrilla = ({ pokeData }) => {
                                     ? "gray"
                                     : "white",
                               }}
-                              
                             >
-                              <p className="typeText">{type.name.toUpperCase()}</p>
+                              <p className="typeText">
+                                {type.name.toUpperCase()}
+                              </p>
                             </div>
                           );
                         })}
@@ -115,7 +118,8 @@ export const PokeGrilla = ({ pokeData }) => {
                       return (
                         <li className="list" key={index}>
                           {stat.stat.name.toUpperCase()}
-                          <div className="borderDiv"
+                          <div
+                            className="borderDiv"
                             style={{
                               backgroundColor: "white",
                               width: 255,
@@ -130,10 +134,10 @@ export const PokeGrilla = ({ pokeData }) => {
                                 marginLeft: 0,
                                 color: "white",
                                 borderRadius: 10,
-                                marginLeft: -1
+                                marginLeft: -1,
                               }}
                             >
-                              {stat["base_stat"]}
+                              <span style={{fontSize: `${stat["base_stat"]}` <= 20 && 12 }}>{stat["base_stat"]}</span>
                             </div>
                           </div>
                         </li>
