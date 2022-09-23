@@ -36,14 +36,13 @@ export const PokeGrilla = ({ pokeData }) => {
                   alt={name}
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography style={{fontWeight: 'bold'}} gutterBottom variant="h5" component="div">
                     {name[0].toUpperCase() + name.substring(1)}
                   </Typography>
 
                   <div className="contenedorSpans">
                     {types.length > 1
                       ? types.map(({ type }) => {
-                          console.log(type.name);
                           return (
                             <>
                               <div
@@ -60,9 +59,9 @@ export const PokeGrilla = ({ pokeData }) => {
                                       ? "lightgray"
                                       : `${type.name}` === "bug"
                                       ? "#c1c700"
-                                      : `${types[1]?.type.name}` === "poison"
+                                      : `${type.name}` === "poison"
                                       ? "purple"
-                                      : `${types[1]?.type.name}` === "flying"
+                                      : `${type.name}` === "flying"
                                       ? "gray"
                                       : "white",
                                 }}
@@ -91,9 +90,9 @@ export const PokeGrilla = ({ pokeData }) => {
                                     ? "lightgray"
                                     : `${type.name}` === "bug"
                                     ? "#c1c700"
-                                    : `${types[1]?.type.name}` === "poison"
+                                    : `${type.name}` === "poison"
                                     ? "purple"
-                                    : `${types[1]?.type.name}` === "flying"
+                                    : `${type.name}` === "flying"
                                     ? "gray"
                                     : "white",
                               }}
@@ -137,7 +136,7 @@ export const PokeGrilla = ({ pokeData }) => {
                                 marginLeft: -1,
                               }}
                             >
-                              <span style={{fontSize: `${stat["base_stat"]}` <= 20 && 12 }}>{stat["base_stat"]}</span>
+                              <span style={{fontSize: `${stat["base_stat"]}` <= 25 && 12 }}>{stat["base_stat"]}</span>
                             </div>
                           </div>
                         </li>
