@@ -9,7 +9,7 @@ export const HomeScreen = () => {
     </div>
     </div>
     <div className='overBakcground'></div>
-    <h1 className='title'>Welcome tu PokemonsApp</h1>
+    <h1 className='title'>Welcome to PokemonsApp</h1>
     </>
   )
 }
