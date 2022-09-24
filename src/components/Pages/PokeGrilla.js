@@ -41,11 +41,10 @@ export const PokeGrilla = ({ pokeData }) => {
                   </Typography>
 
                   <div className="contenedorSpans">
-                    {types.length > 1
-                      ? types.map(({ type }) => {
+                 {types.map(({ type }, index) => {
                           return (
-                            <>
                               <div
+                                key={index}
                                 className="type"
                                 style={{
                                   backgroundColor:
@@ -66,44 +65,16 @@ export const PokeGrilla = ({ pokeData }) => {
                                       : "white",
                                 }}
                               >
-                                <p className="typeText">
+                                <p key={index} className="typeText">
                                   {type.name.toUpperCase()}
                                 </p>
                               </div>
-                            </>
                           );
                         })
-                      : types.map(({ type }) => {
-                          console.log(type.name, "un solo tipo");
-                          return (
-                            <div
-                              className="type"
-                              style={{
-                                backgroundColor:
-                                  `${type.name}` === "grass"
-                                    ? "lightGreen"
-                                    : `${type.name}` === "fire"
-                                    ? "#ff6c3e"
-                                    : `${type.name}` === "water"
-                                    ? "rgb(25, 118, 210)"
-                                    : `${type.name}` === "normal"
-                                    ? "lightgray"
-                                    : `${type.name}` === "bug"
-                                    ? "#c1c700"
-                                    : `${type.name}` === "poison"
-                                    ? "purple"
-                                    : `${type.name}` === "flying"
-                                    ? "gray"
-                                    : "white",
-                              }}
-                            >
-                              <p className="typeText">
-                                {type.name.toUpperCase()}
-                              </p>
-                            </div>
-                          );
-                        })}
+               
+                 }
                   </div>
+                 
 
                   <ul
                     style={{
@@ -130,10 +101,9 @@ export const PokeGrilla = ({ pokeData }) => {
                               style={{
                                 backgroundColor: "#1976d2",
                                 width: `${stat["base_stat"]}px`,
-                                marginLeft: 0,
+                                marginLeft: -1,
                                 color: "white",
                                 borderRadius: 10,
-                                marginLeft: -1,
                               }}
                             >
                               <span style={{fontSize: `${stat["base_stat"]}` <= 25 && 12 }}>{stat["base_stat"]}</span>

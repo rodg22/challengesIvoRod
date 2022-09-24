@@ -30,7 +30,6 @@ export const PokemonsApi = () => {
       .catch(console.warn);
 
   }, []);
-  console.log(pokeData);
   return pokeData;
 };
 
