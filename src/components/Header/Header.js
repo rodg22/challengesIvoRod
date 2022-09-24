@@ -7,9 +7,22 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import HamburgerMenu from "./HamburgerMenu";
+import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Auth/Context";
 
 const Header = () => {
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
+  const { user, onLogout } = useContext( AuthContext )
+
+  const handleLogout = () => {
+    navigate("/login", {
+      replace: true,
+    });
+    onLogout('Iniciar Sesión')
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -32,7 +45,21 @@ const Header = () => {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               PokeAPP
             </Typography>
-            <Button color="inherit">Login</Button>
+            <NavLink to={"/login"} style={{color: 'white', fontWeight: 'bold'}}>
+            <span className="nav-item nav-link text-info">{user?.name}</span>
+            <Button color="inherit">
+
+            Login
+            </Button>
+            <Button
+            onClick={handleLogout}
+            color='inherit'
+            to="login"
+          >
+            Logout
+          </Button>
+            </NavLink> 
+            
           </Toolbar>
         </AppBar>
         <HamburgerMenu open={open} setOpen={setOpen} />
