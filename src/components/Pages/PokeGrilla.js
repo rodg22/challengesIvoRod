@@ -139,7 +139,7 @@ export const PokeGrilla = () => {
         }}
       >
         <Pagination
-          count={51}
+          count={58}
           renderItem={(item) => (
             <>
               {item.selected && setPage(item.page - 1)}
