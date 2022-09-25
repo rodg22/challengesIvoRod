@@ -16,8 +16,11 @@ export const PokemonsApi = () => {
     peticion
       .then((resp) => {
         resp.json().then((data) => {
-          const { results: resultados } = data;
-          resultados.map(({ url }) => {
+          const { results, next, previous } = data;
+          //VER EN QUE PAGINA ESTAMOS
+          //Si previous es null, estamos en la pagina 1
+          //Si next es null, estamos en la ultima pagina
+          results.map(({ url }) => {
             const peticion2 = fetch(url);
             peticion2.then((resp) => {
               resp.json().then((data) => {
@@ -28,8 +31,6 @@ export const PokemonsApi = () => {
         });
       })
       .catch(console.warn);
-
   }, []);
   return pokeData;
 };
-
