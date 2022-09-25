@@ -3,18 +3,21 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea, Pagination } from "@mui/material";
+import { CardActionArea } from "@mui/material";
+import Pagination from "@mui/material/Pagination";
+import PaginationItem from "@mui/material/PaginationItem";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { PokemonsApi } from "../../helper/PokemonsApi";
 import "./PokeGrilla.css";
 
-/// TODO PAGINATION
+/// TODO PAGINA
 /// TODO QUE NO SE VUELVA A LLAMAR LA API CUANDO SE REALIZA UN CAMBIO
 
-export const PokeGrilla = ({ pokeData }) => {
-  let pokemonsData = PokemonsApi();
-  console.log(pokemonsData);
+export const PokeGrilla = () => {
+  const { pokeData, setPage } = PokemonsApi();
 
-  pokemonsData.sort((a, b) => {
+  pokeData.sort((a, b) => {
     return a.id - b.id;
   });
 
@@ -22,7 +25,7 @@ export const PokeGrilla = ({ pokeData }) => {
     <>
       <h1>POKEGRID</h1>
       <div className="divGrid">
-        {pokemonsData.map(({ name, stats, sprites, id, types }) => {
+        {pokeData.map(({ name, stats, sprites, id, types }) => {
           return (
             <Card
               className="divGridDiv"
@@ -135,7 +138,18 @@ export const PokeGrilla = ({ pokeData }) => {
           margin: "50px 0",
         }}
       >
-        <Pagination count={10} showFirstButton showLastButton />
+        <Pagination
+          count={51}
+          renderItem={(item) => (
+            <>
+              {item.selected && setPage(item.page - 1)}
+              <PaginationItem
+                components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+                {...item}
+              />
+            </>
+          )}
+        />
       </div>
     </>
   );
