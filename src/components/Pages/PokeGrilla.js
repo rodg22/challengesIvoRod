@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
+import { CardActionArea, Pagination } from "@mui/material";
 import { PokemonsApi } from "../../helper/PokemonsApi";
 import "./PokeGrilla.css";
 
@@ -12,6 +12,7 @@ import "./PokeGrilla.css";
 
 export const PokeGrilla = ({ pokeData }) => {
   let pokemonsData = PokemonsApi();
+  console.log(pokemonsData);
 
   pokemonsData.sort((a, b) => {
     return a.id - b.id;
@@ -36,45 +37,47 @@ export const PokeGrilla = ({ pokeData }) => {
                   alt={name}
                 />
                 <CardContent>
-                  <Typography style={{fontWeight: 'bold'}} gutterBottom variant="h5" component="div">
+                  <Typography
+                    style={{ fontWeight: "bold" }}
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                  >
                     {name[0].toUpperCase() + name.substring(1)}
                   </Typography>
 
                   <div className="contenedorSpans">
-                 {types.map(({ type }, index) => {
-                          return (
-                              <div
-                                key={index}
-                                className="type"
-                                style={{
-                                  backgroundColor:
-                                    `${type.name}` === "grass"
-                                      ? "lightGreen"
-                                      : `${type.name}` === "fire"
-                                      ? "#ff6c3e"
-                                      : `${type.name}` === "water"
-                                      ? "rgb(25, 118, 210)"
-                                      : `${type.name}` === "normal"
-                                      ? "lightgray"
-                                      : `${type.name}` === "bug"
-                                      ? "#c1c700"
-                                      : `${type.name}` === "poison"
-                                      ? "purple"
-                                      : `${type.name}` === "flying"
-                                      ? "gray"
-                                      : "white",
-                                }}
-                              >
-                                <p key={index} className="typeText">
-                                  {type.name.toUpperCase()}
-                                </p>
-                              </div>
-                          );
-                        })
-               
-                 }
+                    {types.map(({ type }, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className="type"
+                          style={{
+                            backgroundColor:
+                              `${type.name}` === "grass"
+                                ? "lightGreen"
+                                : `${type.name}` === "fire"
+                                ? "#ff6c3e"
+                                : `${type.name}` === "water"
+                                ? "rgb(25, 118, 210)"
+                                : `${type.name}` === "normal"
+                                ? "lightgray"
+                                : `${type.name}` === "bug"
+                                ? "#c1c700"
+                                : `${type.name}` === "poison"
+                                ? "purple"
+                                : `${type.name}` === "flying"
+                                ? "gray"
+                                : "white",
+                          }}
+                        >
+                          <p key={index} className="typeText">
+                            {type.name.toUpperCase()}
+                          </p>
+                        </div>
+                      );
+                    })}
                   </div>
-                 
 
                   <ul
                     style={{
@@ -106,7 +109,13 @@ export const PokeGrilla = ({ pokeData }) => {
                                 borderRadius: 10,
                               }}
                             >
-                              <span style={{fontSize: `${stat["base_stat"]}` <= 25 && 12 }}>{stat["base_stat"]}</span>
+                              <span
+                                style={{
+                                  fontSize: `${stat["base_stat"]}` <= 25 && 12,
+                                }}
+                              >
+                                {stat["base_stat"]}
+                              </span>
                             </div>
                           </div>
                         </li>
@@ -118,6 +127,15 @@ export const PokeGrilla = ({ pokeData }) => {
             </Card>
           );
         })}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          margin: "50px 0",
+        }}
+      >
+        <Pagination count={10} showFirstButton showLastButton />
       </div>
     </>
   );
