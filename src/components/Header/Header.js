@@ -27,7 +27,6 @@ const Header = () => {
   const handleDrawerOpen = () => {
     setOpen(true);
   };
-
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
