@@ -3,18 +3,26 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea, Pagination } from "@mui/material";
+import { CardActionArea } from "@mui/material";
 import { PokemonsApi } from "../../helper/PokemonsApi";
+import Pagination from '@mui/material/Pagination';
+import PaginationItem from '@mui/material/PaginationItem';
+import Stack from '@mui/material/Stack';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
 import "./PokeGrilla.css";
 
 /// TODO PAGINATION
 /// TODO QUE NO SE VUELVA A LLAMAR LA API CUANDO SE REALIZA UN CAMBIO
 
-export const PokeGrilla = ({ pokeData }) => {
-  let pokemonsData = PokemonsApi();
-  console.log(pokemonsData);
+export const PokeGrilla = () => {
+  // let pokeData = PokemonsApi();
 
-  pokemonsData.sort((a, b) => {
+  const {pokeData, onNext, onPrevious, page, setPage} = PokemonsApi() 
+
+
+  pokeData.sort((a, b) => {
     return a.id - b.id;
   });
 
@@ -22,7 +30,7 @@ export const PokeGrilla = ({ pokeData }) => {
     <>
       <h1>POKEGRID</h1>
       <div className="divGrid">
-        {pokemonsData.map(({ name, stats, sprites, id, types }) => {
+        {pokeData.map(({ name, stats, sprites, id, types }) => {
           return (
             <Card
               className="divGridDiv"
@@ -135,7 +143,33 @@ export const PokeGrilla = ({ pokeData }) => {
           margin: "50px 0",
         }}
       >
-        <Pagination count={10} showFirstButton showLastButton />
+      <Pagination
+  count={50}
+  renderItem={(item) => (
+    <>
+       { 
+        console.log(item.page, 'page')
+        }
+        {
+
+        console.log(item.disabled, 'disabled')
+        }
+        {
+        console.log(item.onClick, 'onClick')
+
+        }
+        {
+        console.log(item.selected, 'selected')
+
+        }
+        <PaginationItem
+      components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+      {...item}
+    />
+    </>
+  )}
+/>
+        {/* <Pagination count={10} showFirstButton showLastButton /> */}
       </div>
     </>
   );
