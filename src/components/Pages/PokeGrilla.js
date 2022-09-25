@@ -5,11 +5,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { PokemonsApi } from "../../helper/PokemonsApi";
-import Pagination from '@mui/material/Pagination';
-import PaginationItem from '@mui/material/PaginationItem';
-import Stack from '@mui/material/Stack';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Pagination from "@mui/material/Pagination";
+import PaginationItem from "@mui/material/PaginationItem";
+import Stack from "@mui/material/Stack";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 import "./PokeGrilla.css";
 
@@ -19,8 +19,7 @@ import "./PokeGrilla.css";
 export const PokeGrilla = () => {
   // let pokeData = PokemonsApi();
 
-  const {pokeData, onNext, onPrevious, page, setPage} = PokemonsApi() 
-
+  const { pokeData, page, setPage } = PokemonsApi();
 
   pokeData.sort((a, b) => {
     return a.id - b.id;
@@ -143,32 +142,18 @@ export const PokeGrilla = () => {
           margin: "50px 0",
         }}
       >
-      <Pagination
-  count={50}
-  renderItem={(item) => (
-    <>
-       { 
-        console.log(item.page, 'page')
-        }
-        {
-
-        console.log(item.disabled, 'disabled')
-        }
-        {
-        console.log(item.onClick, 'onClick')
-
-        }
-        {
-        console.log(item.selected, 'selected')
-
-        }
-        <PaginationItem
-      components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
-      {...item}
-    />
-    </>
-  )}
-/>
+        <Pagination
+          count={51}
+          renderItem={(item) => (
+            <>
+              {item.selected && setPage(item.page -1)}
+              <PaginationItem
+                components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+                {...item}
+              />
+            </>
+          )}
+        />
         {/* <Pagination count={10} showFirstButton showLastButton /> */}
       </div>
     </>
