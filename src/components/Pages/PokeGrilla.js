@@ -19,7 +19,10 @@ import { colorTipos } from "../../helper/colorTipos";
 
 export const PokeGrilla = () => {
   const { pokeData, setPage } = PokemonsApi();
-  const { filteredPokeData } = LlamadaTipos();
+  // const { filteredPokeData } = LlamadaTipos();
+
+
+  
 
   pokeData.sort((a, b) => {
     return a.id - b.id;

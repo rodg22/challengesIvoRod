@@ -46,14 +46,16 @@ const Header = () => {
             </Typography>
             <NavLink to={"/login"} style={{color: 'white', fontWeight: 'bold'}}>
             <span className="nav-item nav-link text-info">{user?.name}</span>
+            
+           
             <Button color="inherit">
 
             Login
             </Button>
+            
             <Button
             onClick={handleLogout}
             color='inherit'
-            to="login"
           >
             Logout
           </Button>
