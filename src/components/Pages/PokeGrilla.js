@@ -9,13 +9,17 @@ import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { PokemonsApi } from "../../helper/PokemonsApi";
+import { LlamadaTipos } from "../../helper/LlamadaTipos";
+
 import "./PokeGrilla.css";
+import { colorTipos } from "../../helper/colorTipos";
 
 /// TODO PAGINA
 /// TODO QUE NO SE VUELVA A LLAMAR LA API CUANDO SE REALIZA UN CAMBIO
 
 export const PokeGrilla = () => {
   const { pokeData, setPage } = PokemonsApi();
+  const { filteredPokeData } = LlamadaTipos();
 
   pokeData.sort((a, b) => {
     return a.id - b.id;
@@ -55,24 +59,7 @@ export const PokeGrilla = () => {
                         <div
                           key={index}
                           className="type"
-                          style={{
-                            backgroundColor:
-                              `${type.name}` === "grass"
-                                ? "lightGreen"
-                                : `${type.name}` === "fire"
-                                ? "#ff6c3e"
-                                : `${type.name}` === "water"
-                                ? "rgb(25, 118, 210)"
-                                : `${type.name}` === "normal"
-                                ? "lightgray"
-                                : `${type.name}` === "bug"
-                                ? "#c1c700"
-                                : `${type.name}` === "poison"
-                                ? "purple"
-                                : `${type.name}` === "flying"
-                                ? "gray"
-                                : "white",
-                          }}
+                          style={{ backgroundColor: colorTipos(type.name) }}
                         >
                           <p key={index} className="typeText">
                             {type.name.toUpperCase()}
