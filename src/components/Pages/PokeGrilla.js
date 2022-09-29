@@ -10,29 +10,37 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { PokemonsApi } from "../../helper/PokemonsApi";
 import { LlamadaTipos } from "../../helper/LlamadaTipos";
+import { useState } from "react";
 
 import "./PokeGrilla.css";
 import { colorTipos } from "../../helper/colorTipos";
+import  ButtonsTypes  from "./ButtonsTypes";
 
 /// TODO PAGINA
 /// TODO QUE NO SE VUELVA A LLAMAR LA API CUANDO SE REALIZA UN CAMBIO
 
 export const PokeGrilla = () => {
   const { pokeData, setPage } = PokemonsApi();
-  // const { filteredPokeData } = LlamadaTipos();
+  const [types, setTypes] = useState('');
+  const { filteredPokeData } = LlamadaTipos(types);
 
-
-  
+  filteredPokeData.sort((a, b) => {
+    return a.id - b.id;
+  });
 
   pokeData.sort((a, b) => {
     return a.id - b.id;
   });
+  
+  let data = filteredPokeData.length === 0 ? pokeData : filteredPokeData 
 
   return (
     <>
       <h1>POKEGRID</h1>
+      <ButtonsTypes setTypes={setTypes}/>
       <div className="divGrid">
-        {pokeData.map(({ name, stats, sprites, id, types }) => {
+        {     
+          data.map(({ name, stats, sprites, id, types }) => {
           return (
             <Card
               className="divGridDiv"

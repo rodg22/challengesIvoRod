@@ -2,12 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "../components/Pages/RandomPokemon.css";
 
-export const LlamadaTipos = () => {
-  const [page, setPage] = useState(0);
+export const LlamadaTipos = (types) => {
   const [filteredPokeData, setFilteredPokeData] = useState([]);
   const [results, setResults] = useState([]);
 
-  const url = `https://pokeapi.co/api/v2/type/2/`;
+  const url = `https://pokeapi.co/api/v2/type/${types}/`;
 
   useEffect(() => {
     axios.get(url).then((res) => setResults(res.data.pokemon));
@@ -23,6 +22,7 @@ export const LlamadaTipos = () => {
         );
     });
   }, [results]);
+
 
   return {
     filteredPokeData,
