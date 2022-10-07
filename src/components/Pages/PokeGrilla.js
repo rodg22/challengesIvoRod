@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -11,7 +10,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { PokemonsApi } from "../../helper/PokemonsApi";
 import { LlamadaTipos } from "../../helper/LlamadaTipos";
-
+import { useState, useEffect } from "react";
 import "./PokeGrilla.css";
 import { colorTipos } from "../../helper/colorTipos";
 import ButtonsTypes from "./ButtonsTypes";
