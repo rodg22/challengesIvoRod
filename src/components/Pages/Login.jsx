@@ -9,8 +9,8 @@ export const LoginScreen = () => {
   const navigate = useNavigate();
   const { onLogin } = useContext(AuthContext);
   const [form, setForm] = useState({
-    usuario: '',
-    contraseña: '',
+    usuario: "",
+    contraseña: "",
   });
 
   const { usuario, contraseña } = form;
@@ -26,8 +26,7 @@ export const LoginScreen = () => {
     e.preventDefault();
   };
 
-  useEffect(() => {
-  }, [form]);
+  useEffect(() => {}, [form]);
 
   const handleLogin = () => {
     const lastPath = localStorage.getItem("lastPath") || "/";
@@ -53,7 +52,7 @@ export const LoginScreen = () => {
         ></input>
         <input
           placeholder="xxxxxxxx"
-          type="text"
+          type="password"
           name="contraseña"
           value={contraseña}
           onChange={handleChange}

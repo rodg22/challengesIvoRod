@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { PokemonsApi } from "./PokemonsApi";
 import "../components/Pages/RandomPokemon.css";
 
 export const LlamadaTipos = (types) => {
   const [filteredPokeData, setFilteredPokeData] = useState([]);
   const [results, setResults] = useState([]);
+  const { setPokeData } = PokemonsApi();
 
   const url = `https://pokeapi.co/api/v2/type/${types}/`;
 
@@ -22,7 +24,6 @@ export const LlamadaTipos = (types) => {
         );
     });
   }, [results]);
-
 
   return {
     filteredPokeData,
