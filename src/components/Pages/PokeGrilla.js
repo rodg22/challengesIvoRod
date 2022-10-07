@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -11,7 +11,6 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { PokemonsApi } from "../../helper/PokemonsApi";
 import { LlamadaTipos } from "../../helper/LlamadaTipos";
-import { useState } from "react";
 
 import "./PokeGrilla.css";
 import { colorTipos } from "../../helper/colorTipos";
@@ -31,7 +30,7 @@ export const PokeGrilla = () => {
     return a.id - b.id;
   });
 
-  // Poner un spinner al esperar la respuesta
+  // Poner un spinner al esperar la respuesta --> electrode girando y el backgroun color en grisecito
   // Toast con el tipo cambiado
 
   return (

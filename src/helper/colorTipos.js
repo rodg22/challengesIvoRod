@@ -1,7 +1,7 @@
 export const colorTipos = (tipo) => {
   switch (tipo) {
     case "fighting":
-      return "var(--fight)";
+      return "var(--fighting)";
     case "bug":
       return "var(--bug)";
     case "dark":

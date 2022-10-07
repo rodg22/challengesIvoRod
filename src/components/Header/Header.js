@@ -15,13 +15,13 @@ import { AuthContext } from "../../Auth/Context";
 const Header = () => {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
-  const { user, onLogout } = useContext( AuthContext )
+  const { user, onLogout } = useContext(AuthContext);
 
   const handleLogout = () => {
     navigate("/login", {
       replace: true,
     });
-    onLogout('Iniciar Sesión')
+    onLogout("Iniciar Sesión");
   };
 
   const handleDrawerOpen = () => {
@@ -29,7 +29,7 @@ const Header = () => {
   };
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box style={{ zIndex: "1000 !important" }} sx={{ flexGrow: 1 }}>
         <AppBar position="fixed" open={open}>
           <Toolbar>
             <IconButton
@@ -44,23 +44,18 @@ const Header = () => {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               PokeAPP
             </Typography>
-            <NavLink to={"/login"} style={{color: 'white', fontWeight: 'bold'}}>
-            <span className="nav-item nav-link text-info">{user?.name}</span>
-            
-           
-            <Button color="inherit">
+            <NavLink
+              to={"/login"}
+              style={{ color: "white", fontWeight: "bold" }}
+            >
+              <span className="nav-item nav-link text-info">{user?.name}</span>
 
-            Login
-            </Button>
-            
-            <Button
-            onClick={handleLogout}
-            color='inherit'
-          >
-            Logout
-          </Button>
-            </NavLink> 
-            
+              <Button color="inherit">Login</Button>
+
+              <Button onClick={handleLogout} color="inherit">
+                Logout
+              </Button>
+            </NavLink>
           </Toolbar>
         </AppBar>
         <HamburgerMenu open={open} setOpen={setOpen} />
