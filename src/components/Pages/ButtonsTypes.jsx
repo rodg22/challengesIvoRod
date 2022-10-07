@@ -1,10 +1,8 @@
 import React from "react";
 import { colorTipos } from "../../helper/colorTipos";
-import './buttonsTypes.css'
+import "./buttonsTypes.css";
 
-const ButtonsTypes = ({setTypes}) => {
-  
-
+const ButtonsTypes = ({ setTypes }) => {
   let tipos = [
     "fighting",
     "bug",
@@ -27,25 +25,37 @@ const ButtonsTypes = ({setTypes}) => {
   ];
 
   const handleClick = (e) => {
-    setTypes(e.target.innerHTML)
-  }
+    setTypes(e.target.innerHTML);
+  };
 
-  const handleReset = (e) => {
-    setTypes('')
-  }
+  const handleReset = () => {
+    setTypes("");
+  };
 
   return (
-      <>
-    <div className="divButtons">
-      {tipos.map((tipo) => {
-        return(
-        <button onClick={handleClick} style={{ backgroundColor: colorTipos(tipo), width: 80, color: 'white'}} key={tipo}>{tipo}</button>
-        )
-      })}
-        <button onClick={handleReset} style={{width: 100}}>all types</button>
-    </div>
+    <>
+      <div className="divButtons">
+        {tipos.map((tipo) => {
+          return (
+            <button
+              onClick={handleClick}
+              style={{
+                backgroundColor: colorTipos(tipo),
+                width: 80,
+                color: "white",
+              }}
+              key={tipo}
+            >
+              {tipo}
+            </button>
+          );
+        })}
+        <button onClick={handleReset} style={{ width: 100 }}>
+          all types
+        </button>
+      </div>
     </>
-      )
-}
+  );
+};
 
 export default ButtonsTypes;
