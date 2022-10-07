@@ -24,5 +24,5 @@ export const PokemonsApi = () => {
     });
   }, [results]);
 
-  return { pokeData, setPage };
+  return { pokeData, setPage, setPokeData };
 };

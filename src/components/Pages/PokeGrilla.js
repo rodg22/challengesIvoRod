@@ -10,20 +10,24 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { PokemonsApi } from "../../helper/PokemonsApi";
 import { LlamadaTipos } from "../../helper/LlamadaTipos";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 
 import "./PokeGrilla.css";
 import { colorTipos } from "../../helper/colorTipos";
 import  ButtonsTypes  from "./ButtonsTypes";
 
+
 /// TODO PAGINA
 /// TODO QUE NO SE VUELVA A LLAMAR LA API CUANDO SE REALIZA UN CAMBIO
 
 export const PokeGrilla = () => {
-  const { pokeData, setPage } = PokemonsApi();
+  const { pokeData, setPage, setPokeData } = PokemonsApi();
   const [types, setTypes] = useState('');
   const { filteredPokeData } = LlamadaTipos(types);
+  const [first20, setFirst20] = useState([])
 
+  
   filteredPokeData.sort((a, b) => {
     return a.id - b.id;
   });
@@ -32,14 +36,32 @@ export const PokeGrilla = () => {
     return a.id - b.id;
   });
   
-  let data = filteredPokeData.length === 0 ? pokeData : filteredPokeData 
+  let data = filteredPokeData.length === 0 ? pokeData : filteredPokeData;
+  
+// console.log(filteredPokeData, 'filteredPokeData')
+
+useEffect(() => {
+   setFirst20(pokeData)
+}, [pokeData])
+
+console.log(first20, 'first20')
+
+useEffect(() => {
+  console.log('cambio')
+  setPokeData([])
+
+  // types === '' ? setPokeData(first20) : setPokeData([])
+  
+}, [filteredPokeData])
+
 
   return (
     <>
       <h1>POKEGRID</h1>
       <ButtonsTypes setTypes={setTypes}/>
       <div className="divGrid">
-        {     
+        {   
+          data.length ? 
           data.map(({ name, stats, sprites, id, types }) => {
           return (
             <Card
@@ -126,8 +148,10 @@ export const PokeGrilla = () => {
                 </CardContent>
               </CardActionArea>
             </Card>
-          );
-        })}
+          ) 
+        }):
+          (<h3>Loading....</h3>)
+        }
       </div>
       <div
         style={{
