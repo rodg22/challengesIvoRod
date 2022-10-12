@@ -38,6 +38,7 @@ export const PokeGrilla = () => {
       <ButtonsTypes setTypes={setTypes} />
       {data.length ? (
         <div className="divGrid">
+          {!data.length && <h2>Loading...</h2>}
           {data.map(({ name, stats, sprites, id, types }) => {
             return (
               <Card
