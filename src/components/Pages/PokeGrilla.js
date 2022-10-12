@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 import "./PokeGrilla.css";
 import { colorTipos } from "../../helper/colorTipos";
 import ButtonsTypes from "./ButtonsTypes";
+import Spinner from "../Spinner/Spinner";
 
 export const PokeGrilla = () => {
   const { pokeData, setPage } = PokemonsApi();
@@ -29,16 +30,15 @@ export const PokeGrilla = () => {
     return a.id - b.id;
   });
 
-  // Poner un spinner al esperar la respuesta --> electrode girando y el backgroun color en grisecito
+  // Poner un spinner al esperar la respuesta --> electrode girando y el background color en grisecito
   // Toast con el tipo cambiado
 
   return (
     <>
       <h1>POKEGRID</h1>
-      <ButtonsTypes setTypes={setTypes} />
+      <ButtonsTypes setTypes={setTypes} setPage={setPage} />
       {data.length ? (
         <div className="divGrid">
-          {!data.length && <h2>Loading...</h2>}
           {data.map(({ name, stats, sprites, id, types }) => {
             return (
               <Card
@@ -130,7 +130,7 @@ export const PokeGrilla = () => {
           })}
         </div>
       ) : (
-        <h3>Loading...</h3>
+        <Spinner />
       )}
       <div
         style={{
@@ -143,6 +143,9 @@ export const PokeGrilla = () => {
           count={58}
           renderItem={(item) => (
             <>
+              {/* {item.selected || types === ""
+                ? setPage(item.page - 1)
+                : setPage(1)} */}
               {item.selected && setPage(item.page - 1)}
               <PaginationItem
                 components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
