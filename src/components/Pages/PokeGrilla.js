@@ -34,8 +34,9 @@ export const PokeGrilla = () => {
   return (
     <>
       <h1>POKEGRID</h1>
-      <ButtonsTypes setTypes={setTypes} />
       {data.length ? (
+        <>
+      <ButtonsTypes setTypes={setTypes} />
         <div className="divGrid">
           {data.map(({ name, stats, sprites, id, types }) => {
             return (
@@ -127,18 +128,19 @@ export const PokeGrilla = () => {
             );
           })}
         </div>
+        </>
       ) : (
         <Spinner />
       )}
       <div
         style={{
-          display: "flex",
+          display: `${data.length ? "flex" : 'none'}`,
           justifyContent: "center",
-          margin: "50px 0",
+          margin: "50px 0"
         }}
       >
       {types === '' &&
-      <PaginationControlled setPage={setPage} page={page} types={types} />    
+      <PaginationControlled setPage={setPage} page={page} types={types}/>    
       }
       </div>
     </>
