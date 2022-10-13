@@ -83,3 +83,11 @@
     margin-bottom: 8px;
 }
 
+
+.backgroundSpinner {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 100px;
+    margin-top: -110px;
+    background-color: lightgray;
+}

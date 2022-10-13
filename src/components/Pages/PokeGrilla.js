@@ -29,119 +29,120 @@ export const PokeGrilla = () => {
 
   // Poner un spinner al esperar la respuesta --> electrode girando y el background color en grisecito
   // Toast con el tipo cambiado
- 
 
   return (
     <>
       <h1>POKEGRID</h1>
       {data.length ? (
         <>
-      <ButtonsTypes setTypes={setTypes} />
-        <div className="divGrid">
-          {data.map(({ name, stats, sprites, id, types }) => {
-            return (
-              <Card
-                className="divGridDiv"
-                key={id}
-                sx={{ maxWidth: 500, minWidth: 300 }}
-              >
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    image={sprites.other["official-artwork"].front_default}
-                    alt={name}
-                  />
-                  <CardContent>
-                    <Typography
-                      style={{ fontWeight: "bold" }}
-                      gutterBottom
-                      variant="h5"
-                      component="div"
-                    >
-                      {name[0].toUpperCase() + name.substring(1)}
-                    </Typography>
+          <ButtonsTypes setTypes={setTypes} />
+          <div className="divGrid">
+            {data.map(({ name, stats, sprites, id, types }) => {
+              return (
+                <Card
+                  className="divGridDiv"
+                  key={id}
+                  sx={{ maxWidth: 500, minWidth: 300 }}
+                >
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image={sprites.other["official-artwork"].front_default}
+                      alt={name}
+                    />
+                    <CardContent>
+                      <Typography
+                        style={{ fontWeight: "bold" }}
+                        gutterBottom
+                        variant="h5"
+                        component="div"
+                      >
+                        {name[0].toUpperCase() + name.substring(1)}
+                      </Typography>
 
-                    <div className="contenedorSpans">
-                      {types.map(({ type: { name } }, index) => {
-                        return (
-                          <div
-                            key={index}
-                            className="type"
-                            style={{ backgroundColor: colorTipos(name) }}
-                          >
-                            <p key={index} className="typeText">
-                              {name.toUpperCase()}
-                            </p>
-                          </div>
-                        );
-                      })}
-                    </div>
-
-                    <ul
-                      style={{
-                        display: "flex",
-                        justifyContent: "flex-start",
-                        flexDirection: "column",
-                        padding: "initial",
-                      }}
-                    >
-                      {stats.map((stat, index) => {
-                        return (
-                          <li className="list" key={index}>
-                            {stat.stat.name.toUpperCase()}
+                      <div className="contenedorSpans">
+                        {types.map(({ type: { name } }, index) => {
+                          return (
                             <div
-                              className="borderDiv"
-                              style={{
-                                backgroundColor: "white",
-                                width: 255,
-                                marginLeft: 0,
-                                borderRadius: 10,
-                              }}
+                              key={index}
+                              className="type"
+                              style={{ backgroundColor: colorTipos(name) }}
                             >
+                              <p key={index} className="typeText">
+                                {name.toUpperCase()}
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      <ul
+                        style={{
+                          display: "flex",
+                          justifyContent: "flex-start",
+                          flexDirection: "column",
+                          padding: "initial",
+                        }}
+                      >
+                        {stats.map((stat, index) => {
+                          return (
+                            <li className="list" key={index}>
+                              {stat.stat.name.toUpperCase()}
                               <div
+                                className="borderDiv"
                                 style={{
-                                  backgroundColor: "#1976d2",
-                                  width: `${stat["base_stat"]}px`,
-                                  marginLeft: -1,
-                                  color: "white",
+                                  backgroundColor: "white",
+                                  width: 255,
+                                  marginLeft: 0,
                                   borderRadius: 10,
                                 }}
                               >
-                                <span
+                                <div
                                   style={{
-                                    fontSize:
-                                      `${stat["base_stat"]}` <= 25 && 12,
+                                    backgroundColor: "#1976d2",
+                                    width: `${stat["base_stat"]}px`,
+                                    marginLeft: -1,
+                                    color: "white",
+                                    borderRadius: 10,
                                   }}
                                 >
-                                  {stat["base_stat"]}
-                                </span>
+                                  <span
+                                    style={{
+                                      fontSize:
+                                        `${stat["base_stat"]}` <= 25 && 12,
+                                    }}
+                                  >
+                                    {stat["base_stat"]}
+                                  </span>
+                                </div>
                               </div>
-                            </div>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            );
-          })}
-        </div>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              );
+            })}
+          </div>
         </>
       ) : (
-        <Spinner />
+        <div className="backgroundSpinner">
+          <Spinner />
+        </div>
       )}
       <div
         style={{
-          display: `${data.length ? "flex" : 'none'}`,
+          display: `${data.length ? "flex" : "none"}`,
           justifyContent: "center",
-          margin: "50px 0"
+          margin: "50px 0",
         }}
       >
-      {types === '' &&
-      <PaginationControlled setPage={setPage} page={page} types={types}/>    
-      }
+        {types === "" && (
+          <PaginationControlled setPage={setPage} page={page} types={types} />
+        )}
       </div>
     </>
   );
