@@ -40,6 +40,7 @@ const ButtonsTypes = ({ setTypes }) => {
         e.target.innerHTML[0].toUpperCase() + e.target.innerHTML.substring(1)
       } type!`,
       toast: true,
+      width: "200px"
     });
   };
 
