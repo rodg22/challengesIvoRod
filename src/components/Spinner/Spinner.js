@@ -1,7 +1,7 @@
 import React from "react";
 import "./Spinner.css";
 
-const Spinner = () => {
+export const Spinner = () => {
   return (
     <div className="spinner spinner-logo">
       <svg
@@ -86,4 +86,4 @@ const Spinner = () => {
   );
 };
 
-export default Spinner;
+

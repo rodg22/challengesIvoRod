@@ -5,6 +5,7 @@ import swal from "sweetalert";
 import SearchBar from "../../SearchBar/SearchBar";
 import {Title} from '../../Title'
 import OnPlay from "../../Events/OnPlay";
+import { Spinner } from "../../Spinner";
 
 
 export const RandomPokemon = () => {
@@ -130,7 +131,8 @@ export const RandomPokemon = () => {
     setDisabled(false);
     setFirstPushAlert(true);
     setAddClass("nonNextPokemon");
-    localStorage.clear();
+    localStorage.removeItem("contador")
+    localStorage.removeItem("contadorIncorrectas")
     window.location.reload();
   };
 
@@ -172,7 +174,7 @@ export const RandomPokemon = () => {
         </h1>
         <h2 className={showid}>Pokemon N°: {pokes.id}</h2>
         <div className="imgContainer">
-          <img src={pokes.image} alt="imagen pokemon" className={filter} />
+          <img src={pokes ? pokes.image : <Spinner />} alt="imagen pokemon" className={filter} />
         </div>
         <SearchBar setSearch={setSearch} search={search} showPokemon={showPokemon} disabled={disabled}/>
         <br />

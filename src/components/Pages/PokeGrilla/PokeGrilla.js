@@ -4,7 +4,7 @@ import { LlamadaTipos } from "../../../helper/LlamadaTipos";
 import { useState, useEffect } from "react";
 import "./PokeGrilla.css";
 import {ButtonsTypes} from "../PokeTypes/index";
-import Spinner from "../../Spinner/Spinner";
+import {Spinner} from "../../Spinner";
 import { PaginationControlled } from "../../Pagination/PaginationControlled";
 import { PokeGrillaItem } from "./PokeGrillaItem";
 
