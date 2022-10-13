@@ -1,9 +1,9 @@
 import React from "react";
-import { colorTipos } from "../../helper/colorTipos";
+import { colorTipos } from "../../../helper/colorTipos";
 import "./buttonsTypes.css";
 import Swal from "sweetalert2";
 
-const ButtonsTypes = ({ setTypes }) => {
+export const ButtonsTypes = ({ setTypes }) => {
 
 
   let tipos = [

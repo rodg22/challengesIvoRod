@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { PokemonsApi } from "./PokemonsApi";
-import "../components/Pages/RandomPokemon.css";
+import '../components/Pages/RandomPokemon/RandomPokemon.css';
 
 export const LlamadaTipos = (types) => {
   const [filteredPokeData, setFilteredPokeData] = useState([]);

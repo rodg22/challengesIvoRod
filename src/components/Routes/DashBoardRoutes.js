@@ -1,7 +1,8 @@
 import React from "react";
-import { HomeScreen, Tournament } from "../Pages/index";
+import { HomeScreen } from "../Pages/HomeScreen";
+import { Tournament } from "../Pages/Tournament";
 import { RandomPokemon } from "../Pages/RandomPokemon";
-import { PokeGrilla } from "../Pages/PokeGrilla";
+import { PokeGrilla } from "../Pages/PokeGrilla/PokeGrilla";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 export const DashBoardRoutes = () => {

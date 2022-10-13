@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import "../components/Pages/RandomPokemon.css";
+import '../components/Pages/RandomPokemon/RandomPokemon.css';
+
 
 export const PokemonsApi = () => {
   const [page, setPage] = useState(0);

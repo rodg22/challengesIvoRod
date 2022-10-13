@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { getPokemons } from '../../helper/allPokemons.ts';
+import { getPokemons } from '../../../helper/allPokemons.ts';
 import './RandomPokemon.css';
 import swal from "sweetalert";
-import SearchBar from "../SearchBar/SearchBar";
-import Title from '../Title'
-import OnPlay from "../Events/OnPlay";
+import SearchBar from "../../SearchBar/SearchBar";
+import {Title} from '../../Title'
+import OnPlay from "../../Events/OnPlay";
 
 
 export const RandomPokemon = () => {

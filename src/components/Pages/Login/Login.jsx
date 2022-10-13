@@ -2,8 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../Auth/Context/index";
+import { AuthContext } from "../../../Auth/Context";
 import "./Login.css";
+
 
 export const LoginScreen = () => {
   const navigate = useNavigate();

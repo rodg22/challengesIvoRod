@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import LoginScreen from "../Pages/Login";
+import {LoginScreen} from "../Pages/Login";
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
 import DashBoardRoutes from "./DashBoardRoutes";

@@ -1,12 +1,13 @@
 import React from "react";
-import "../components/Pages/RandomPokemon.css";
+import "../../components/Pages/RandomPokemon/RandomPokemon.css";
 
-const Header = () => {
+export const Title = () => {
   return (
     <>
       <section className="icon-list">
         <i className="nes-squirtle"></i>
         <i className="nes-charmander"></i>
+        <i className="nes-bulbasaur"></i>
       </section>
 
       <h1>
@@ -16,4 +17,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Title;
