@@ -4,6 +4,8 @@ import "./buttonsTypes.css";
 import Swal from "sweetalert2";
 
 const ButtonsTypes = ({ setTypes }) => {
+
+
   let tipos = [
     "fighting",
     "bug",

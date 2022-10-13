@@ -4,10 +4,6 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import Pagination from "@mui/material/Pagination";
-import PaginationItem from "@mui/material/PaginationItem";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { PokemonsApi } from "../../helper/PokemonsApi";
 import { LlamadaTipos } from "../../helper/LlamadaTipos";
 import { useState, useEffect } from "react";
@@ -15,9 +11,10 @@ import "./PokeGrilla.css";
 import { colorTipos } from "../../helper/colorTipos";
 import ButtonsTypes from "./ButtonsTypes";
 import Spinner from "../Spinner/Spinner";
+import { PaginationControlled } from "../Pagination/PaginationControlled";
 
 export const PokeGrilla = () => {
-  const { pokeData, setPage } = PokemonsApi();
+  const { pokeData, setPage, page } = PokemonsApi();
   const [types, setTypes] = useState("");
   const { filteredPokeData } = LlamadaTipos(types);
   const [data, setData] = useState([]);
@@ -32,11 +29,12 @@ export const PokeGrilla = () => {
 
   // Poner un spinner al esperar la respuesta --> electrode girando y el background color en grisecito
   // Toast con el tipo cambiado
+ 
 
   return (
     <>
       <h1>POKEGRID</h1>
-      <ButtonsTypes setTypes={setTypes} setPage={setPage} />
+      <ButtonsTypes setTypes={setTypes} />
       {data.length ? (
         <div className="divGrid">
           {data.map(({ name, stats, sprites, id, types }) => {
@@ -139,21 +137,9 @@ export const PokeGrilla = () => {
           margin: "50px 0",
         }}
       >
-        <Pagination
-          count={58}
-          renderItem={(item) => (
-            <>
-              {/* {item.selected || types === ""
-                ? setPage(item.page - 1)
-                : setPage(1)} */}
-              {item.selected && setPage(item.page - 1)}
-              <PaginationItem
-                components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
-                {...item}
-              />
-            </>
-          )}
-        />
+      {types === '' &&
+      <PaginationControlled setPage={setPage} page={page} types={types} />    
+      }
       </div>
     </>
   );

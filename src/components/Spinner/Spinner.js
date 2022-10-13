@@ -3,12 +3,12 @@ import "./Spinner.css";
 
 const Spinner = () => {
   return (
-    <div class="spinner spinner-logo">
+    <div className="spinner spinner-logo">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
-        width="293px"
-        height="290px"
+        width="145px"
+        height="145px"
         viewBox="0.0 0.0 293.05 290.35"
       >
         <g>
