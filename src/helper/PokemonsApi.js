@@ -11,7 +11,7 @@ export const PokemonsApi = () => {
   const url = `https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${
     page > 0 ? page * 20 : 0
   }`;
-
+  
   useEffect(() => {
     axios.get(url).then((res) => setResults(res.data.results));
     setPokeData([]);

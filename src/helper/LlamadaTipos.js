@@ -27,6 +27,7 @@ export const LlamadaTipos = (types) => {
 
 
 
+
   return {
     filteredPokeData,
   };

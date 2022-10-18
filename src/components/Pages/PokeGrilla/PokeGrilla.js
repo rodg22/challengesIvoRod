@@ -8,17 +8,26 @@ import { Spinner } from '../../Spinner'
 import { PaginationControlled } from '../../Pagination/PaginationControlled'
 import { PokeGrillaItem } from './PokeGrillaItem'
 import Stats from './Stats'
+import { LlamadaStats } from '../../../helper/LlamadaStats'
 
 export const PokeGrilla = () => {
-  const { pokeData, setPage, page } = PokemonsApi()
+  const {pokeData, setPage, page} = PokemonsApi()
+  const {pokeStats, setPokeStats} = LlamadaStats()
   const [types, setTypes] = useState('')
   const [clickedStat, setClickedStat] = useState('')
   const { filteredPokeData } = LlamadaTipos(types)
   const [data, setData] = useState([])
 
+
+
   useEffect(() => {
-    types === '' ? setData(pokeData) : setData(filteredPokeData)
-  }, [filteredPokeData, pokeData, types])
+    types === '' ? clickedStat === '' ? setData(pokeData) : setData(pokeStats) : setData(filteredPokeData)
+  }, [filteredPokeData, pokeData, types, clickedStat])
+
+  // useEffect(() => {
+  //   clickedStat !== '' ? setData(pokeStats) : setData(types === '' ? pokeData : filteredPokeData)
+  // }, [clickedStat])
+  
 
   // Sort original
   data.sort((a, b) => {
@@ -54,7 +63,7 @@ export const PokeGrilla = () => {
       break
     case 'SPEED':
       ordenarData(5)
-      break
+      break 
     default:
       break
   }
