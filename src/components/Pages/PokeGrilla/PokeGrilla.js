@@ -8,6 +8,7 @@ import {Spinner} from "../../Spinner";
 import { PaginationControlled } from "../../Pagination/PaginationControlled";
 import { PokeGrillaItem } from "./PokeGrillaItem";
 
+
 export const PokeGrilla = () => {
   const { pokeData, setPage, page } = PokemonsApi();
   const [types, setTypes] = useState("");
