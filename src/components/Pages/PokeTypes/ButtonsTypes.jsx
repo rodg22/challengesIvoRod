@@ -35,7 +35,7 @@ export const ButtonsTypes = ({ setTypes }) => {
       padding: "1em",
       position: "top-right",
       showConfirmButton: false,
-      timer: 1500,
+      timer: 2000,
       title: `${
         e.target.innerHTML[0].toUpperCase() + e.target.innerHTML.substring(1)
       } type!`,

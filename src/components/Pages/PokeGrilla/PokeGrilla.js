@@ -1,26 +1,27 @@
-import * as React from "react";
-import { PokemonsApi } from "../../../helper/PokemonsApi";
-import { LlamadaTipos } from "../../../helper/LlamadaTipos";
-import { useState, useEffect } from "react";
-import "./PokeGrilla.css";
-import {ButtonsTypes} from "../PokeTypes/index";
-import {Spinner} from "../../Spinner";
-import { PaginationControlled } from "../../Pagination/PaginationControlled";
-import { PokeGrillaItem } from "./PokeGrillaItem";
+import * as React from 'react'
+import { PokemonsApi } from '../../../helper/PokemonsApi'
+import { LlamadaTipos } from '../../../helper/LlamadaTipos'
+import { useState, useEffect } from 'react'
+import './PokeGrilla.css'
+import { ButtonsTypes } from '../PokeTypes/index'
+import { Spinner } from '../../Spinner'
+import { PaginationControlled } from '../../Pagination/PaginationControlled'
+import { PokeGrillaItem } from './PokeGrillaItem'
+import Stats from './Stats'
 
 export const PokeGrilla = () => {
-  const { pokeData, setPage, page } = PokemonsApi();
-  const [types, setTypes] = useState("");
-  const { filteredPokeData } = LlamadaTipos(types);
-  const [data, setData] = useState([]);
+  const { pokeData, setPage, page } = PokemonsApi()
+  const [types, setTypes] = useState('')
+  const { filteredPokeData } = LlamadaTipos(types)
+  const [data, setData] = useState([])
 
   useEffect(() => {
-    types === "" ? setData(pokeData) : setData(filteredPokeData);
-  }, [filteredPokeData, pokeData, types]);
+    types === '' ? setData(pokeData) : setData(filteredPokeData)
+  }, [filteredPokeData, pokeData, types])
 
   data.sort((a, b) => {
-    return a.id - b.id;
-  });
+    return a.id - b.id
+  })
 
   return (
     <>
@@ -28,8 +29,9 @@ export const PokeGrilla = () => {
       {data.length ? (
         <>
           <ButtonsTypes setTypes={setTypes} />
+          <Stats />
           <div className="divGrid">
-           <PokeGrillaItem data={data} setData={setData} />
+            <PokeGrillaItem data={data} setData={setData} />
           </div>
         </>
       ) : (
@@ -39,15 +41,15 @@ export const PokeGrilla = () => {
       )}
       <div
         style={{
-          display: `${data.length ? "flex" : "none"}`,
-          justifyContent: "center",
-          margin: "50px 0",
+          display: `${data.length ? 'flex' : 'none'}`,
+          justifyContent: 'center',
+          margin: '50px 0',
         }}
       >
-        {types === "" && (
+        {types === '' && (
           <PaginationControlled setPage={setPage} page={page} types={types} />
         )}
       </div>
     </>
-  );
-};
+  )
+}
