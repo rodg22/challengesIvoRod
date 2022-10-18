@@ -1,15 +1,26 @@
 import React from 'react'
 
-const Stats = () => {
+const Stats = ({setClickedStat}) => {
+
+  const handleChange = (e) => {
+    setClickedStat(e.target.innerText)
+  }
+
+  const handleReset = (e) => {
+    setClickedStat('')
+  }
+
+  
   return (
     <>
         <ul style={{backgroundColor: "black"}}>
-            <li>HP</li>
-            <li>ATTACK</li>
-            <li>DEFENSE</li>
-            <li>S.ATTACK</li>
-            <li>S.DEFENSE</li>
-            <li>SPEED</li>
+            <li onClick={handleChange}>HP</li>
+            <li onClick={handleChange}>ATTACK</li>
+            <li onClick={handleChange}>DEFENSE</li>
+            <li onClick={handleChange}>S.ATTACK</li>
+            <li onClick={handleChange}>S.DEFENSE</li>
+            <li onClick={handleChange}>SPEED</li>
+            <li onClick={handleReset}>ID</li>
         </ul>
     </>
   )

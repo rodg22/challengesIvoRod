@@ -25,6 +25,8 @@ export const LlamadaTipos = (types) => {
     });
   }, [results]);
 
+
+
   return {
     filteredPokeData,
   };

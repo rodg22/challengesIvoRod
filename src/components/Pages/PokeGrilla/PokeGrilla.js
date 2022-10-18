@@ -12,6 +12,7 @@ import Stats from './Stats'
 export const PokeGrilla = () => {
   const { pokeData, setPage, page } = PokemonsApi()
   const [types, setTypes] = useState('')
+  const [clickedStat, setClickedStat] = useState('')
   const { filteredPokeData } = LlamadaTipos(types)
   const [data, setData] = useState([])
 
@@ -34,7 +35,6 @@ export const PokeGrilla = () => {
     })
   }
 
-  const [clickedStat, setClickedStat] = useState('')
 
   switch (clickedStat) {
     case 'HP':
@@ -46,10 +46,10 @@ export const PokeGrilla = () => {
     case 'DEFENSE':
       ordenarData(2)
       break
-    case 'SPECIAL ATTACK':
+    case 'S.ATTACK':
       ordenarData(3)
       break
-    case 'SPECIAL DEFENSE':
+    case 'S.DEFENSE':
       ordenarData(4)
       break
     case 'SPEED':
@@ -77,7 +77,7 @@ export const PokeGrilla = () => {
       {data.length ? (
         <>
           <ButtonsTypes setTypes={setTypes} />
-          <Stats />
+          <Stats setClickedStat={setClickedStat} clickedStat={clickedStat}/>
           <div className="divGrid">
             <PokeGrillaItem data={data} setData={setData} />
           </div>
