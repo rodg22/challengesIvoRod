@@ -5,11 +5,16 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { colorTipos } from "../../../helper/colorTipos";
+import { Spinner } from '../../Spinner'
 
 export const PokeGrillaItem = ({data}) => {
+
+  console.log(data)
   return (
     <>
     {data.map(({ name, stats, sprites, id, types }) => {
+      
+
         return (
           <Card
             className="divGridDiv"
@@ -20,7 +25,7 @@ export const PokeGrillaItem = ({data}) => {
               <CardMedia
                 component="img"
                 height="140"
-                image={sprites.other["official-artwork"].front_default}
+                image={sprites.other["official-artwork"].front_default || sprites.other["home"].front_default}
                 alt={name}
               />
               <CardContent>

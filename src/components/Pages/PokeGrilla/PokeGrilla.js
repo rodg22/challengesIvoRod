@@ -7,7 +7,7 @@ import { ButtonsTypes } from '../PokeTypes/index'
 import { Spinner } from '../../Spinner'
 import { PaginationControlled } from '../../Pagination/PaginationControlled'
 import { PokeGrillaItem } from './PokeGrillaItem'
-import Stats from './Stats'
+import {Stats} from '../Stats'
 import { LlamadaStats } from '../../../helper/LlamadaStats'
 
 export const PokeGrilla = () => {
@@ -24,20 +24,13 @@ export const PokeGrilla = () => {
     types === '' ? clickedStat === '' ? setData(pokeData) : setData(pokeStats) : setData(filteredPokeData)
   }, [filteredPokeData, pokeData, types, clickedStat])
 
-  // useEffect(() => {
-  //   clickedStat !== '' ? setData(pokeStats) : setData(types === '' ? pokeData : filteredPokeData)
-  // }, [clickedStat])
-  
 
   // Sort original
   data.sort((a, b) => {
     return a.id - b.id
   })
 
-  //Logica de ordenar el array por HP
-  // data.sort((a, b) => {
-  //   return b.stats[0]['base_stat'] - a.stats[0]['base_stat']
-  // })
+
   const ordenarData = (posicion) => {
     data.sort((a, b) => {
       return b.stats[posicion]['base_stat'] - a.stats[posicion]['base_stat']
@@ -86,9 +79,11 @@ export const PokeGrilla = () => {
       {data.length ? (
         <>
           <ButtonsTypes setTypes={setTypes} />
-          <Stats setClickedStat={setClickedStat} clickedStat={clickedStat}/>
+          <div style={{display: 'flex'}}>
+          <Stats setClickedStat={setClickedStat} clickedStat={clickedStat} setData={setData}/>
           <div className="divGrid">
             <PokeGrillaItem data={data} setData={setData} />
+          </div>
           </div>
         </>
       ) : (
@@ -103,7 +98,7 @@ export const PokeGrilla = () => {
           margin: '50px 0',
         }}
       >
-        {types === '' && (
+        {types === '' &&  clickedStat === '' && (
           <PaginationControlled setPage={setPage} page={page} types={types} />
         )}
       </div>
