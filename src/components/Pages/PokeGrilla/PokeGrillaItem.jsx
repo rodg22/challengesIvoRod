@@ -1,20 +1,16 @@
-import React from 'react'
+import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { colorTipos } from "../../../helper/colorTipos";
-import { Spinner } from '../../Spinner'
+import { Spinner } from "../../Spinner";
 
-export const PokeGrillaItem = ({data}) => {
-
-  console.log(data)
+export const PokeGrillaItem = ({ data }) => {
   return (
     <>
-    {data.map(({ name, stats, sprites, id, types }) => {
-      
-
+      {data.map(({ name, stats, sprites, id, types }) => {
         return (
           <Card
             className="divGridDiv"
@@ -25,7 +21,12 @@ export const PokeGrillaItem = ({data}) => {
               <CardMedia
                 component="img"
                 height="140"
-                image={sprites.other["official-artwork"].front_default || sprites.other["home"].front_default}
+                image={
+                  sprites.other["official-artwork"].front_default ||
+                  sprites.other["home"].front_default ||
+                  sprites.front_default ||
+                  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png"
+                }
                 alt={name}
               />
               <CardContent>
@@ -86,8 +87,7 @@ export const PokeGrillaItem = ({data}) => {
                           >
                             <span
                               style={{
-                                fontSize:
-                                  `${stat["base_stat"]}` <= 25 && 12,
+                                fontSize: `${stat["base_stat"]}` <= 25 && 12,
                               }}
                             >
                               {stat["base_stat"]}
@@ -103,7 +103,6 @@ export const PokeGrillaItem = ({data}) => {
           </Card>
         );
       })}
-  </>
-  )
-}
-
+    </>
+  );
+};
