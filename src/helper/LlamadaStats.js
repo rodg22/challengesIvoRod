@@ -8,7 +8,7 @@ export const LlamadaStats = () => {
   const [pokeStats, setPokeStats] = useState([]);
   const [results, setResults] = useState([]);
 
-  const url = `https://pokeapi.co/api/v2/pokemon/?limit=1050&offset=${
+  const url = `https://pokeapi.co/api/v2/pokemon/?limit=1154&offset=${
     page > 0 ? page * 20 : 0
   }`;
 

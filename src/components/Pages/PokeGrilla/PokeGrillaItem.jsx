@@ -6,19 +6,22 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { colorTipos } from "../../../helper/colorTipos";
 import { Link } from "react-router-dom";
+import { Spinner } from "../../Spinner";
 
 export const PokeGrillaItem = ({ data }) => {
  
   return (
     <>
-      {data.map(({ name, stats, sprites, id, types }) => {
+    {
+      data.length ? (
+      data.map(({ name, stats, sprites, id, types }) => {
         return (
           <Link to={`/PokeScreen${id}`} style={{textDecoration: 'none'}}>
           <Card
           className="divGridDiv"
           key={id}
-            sx={{ maxWidth: 500, minWidth: 300 }}
-            >
+          sx={{ maxWidth: 500, minWidth: 300 }}
+          >
             <CardActionArea>
               <CardMedia
                 component="img"
@@ -46,9 +49,9 @@ export const PokeGrillaItem = ({ data }) => {
                     return (
                       <div
                       key={index}
-                        className="type"
-                        style={{ backgroundColor: colorTipos(name) }}
-                        >
+                      className="type"
+                      style={{ backgroundColor: colorTipos(name) }}
+                      >
                         <p key={index} className="typeText">
                           {name.toUpperCase()}
                         </p>
@@ -105,7 +108,10 @@ export const PokeGrillaItem = ({ data }) => {
           </Card>
       </Link>
         );
-      })}
+      })
+      )
+: <Spinner />
+}
     </>
   );
 };

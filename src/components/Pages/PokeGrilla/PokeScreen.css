@@ -1,0 +1,31 @@
+.imgClass {
+    height: 300px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.imgDiv {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-around;
+    width: 50%;
+}
+
+
+.typosEnPokeScreen {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    justify-content: right;
+    margin-top: 5px;
+    margin-right: 10px;
+    height: 20px;
+}
+
+.pokeScreenButtons {
+    margin-bottom: 20px;
+}
