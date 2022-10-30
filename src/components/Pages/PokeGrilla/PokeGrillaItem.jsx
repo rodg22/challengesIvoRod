@@ -5,18 +5,20 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { colorTipos } from "../../../helper/colorTipos";
-import { Spinner } from "../../Spinner";
+import { Link } from "react-router-dom";
 
 export const PokeGrillaItem = ({ data }) => {
+ 
   return (
     <>
       {data.map(({ name, stats, sprites, id, types }) => {
         return (
+          <Link to={`/PokeScreen${id}`} style={{textDecoration: 'none'}}>
           <Card
-            className="divGridDiv"
-            key={id}
+          className="divGridDiv"
+          key={id}
             sx={{ maxWidth: 500, minWidth: 300 }}
-          >
+            >
             <CardActionArea>
               <CardMedia
                 component="img"
@@ -35,7 +37,7 @@ export const PokeGrillaItem = ({ data }) => {
                   gutterBottom
                   variant="h5"
                   component="div"
-                >
+                  >
                   {name[0].toUpperCase() + name.substring(1)}
                 </Typography>
 
@@ -43,10 +45,10 @@ export const PokeGrillaItem = ({ data }) => {
                   {types.map(({ type: { name } }, index) => {
                     return (
                       <div
-                        key={index}
+                      key={index}
                         className="type"
                         style={{ backgroundColor: colorTipos(name) }}
-                      >
+                        >
                         <p key={index} className="typeText">
                           {name.toUpperCase()}
                         </p>
@@ -62,7 +64,7 @@ export const PokeGrillaItem = ({ data }) => {
                     flexDirection: "column",
                     padding: "initial",
                   }}
-                >
+                  >
                   {stats.map((stat, index) => {
                     return (
                       <li className="list" key={index}>
@@ -75,7 +77,7 @@ export const PokeGrillaItem = ({ data }) => {
                             marginLeft: 0,
                             borderRadius: 10,
                           }}
-                        >
+                          >
                           <div
                             style={{
                               backgroundColor: "#1976d2",
@@ -84,12 +86,12 @@ export const PokeGrillaItem = ({ data }) => {
                               color: "white",
                               borderRadius: 10,
                             }}
-                          >
+                            >
                             <span
                               style={{
                                 fontSize: `${stat["base_stat"]}` <= 25 && 12,
                               }}
-                            >
+                              >
                               {stat["base_stat"]}
                             </span>
                           </div>
@@ -101,6 +103,7 @@ export const PokeGrillaItem = ({ data }) => {
               </CardContent>
             </CardActionArea>
           </Card>
+      </Link>
         );
       })}
     </>
