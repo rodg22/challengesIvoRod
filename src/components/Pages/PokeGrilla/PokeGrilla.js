@@ -9,6 +9,7 @@ import { PaginationControlled } from '../../Pagination/PaginationControlled'
 import { PokeGrillaItem } from './PokeGrillaItem'
 import {Stats} from '../Stats'
 import { LlamadaStats } from '../../../helper/LlamadaStats'
+import { SearchBar } from './SearchBar'
 
 export const PokeGrilla = () => {
   const {pokeData, setPage, page} = PokemonsApi()
@@ -79,6 +80,7 @@ export const PokeGrilla = () => {
       {data.length ? (
         <>
           <ButtonsTypes setTypes={setTypes} />
+          <SearchBar />
           <div style={{display: 'flex'}}>
           <Stats setClickedStat={setClickedStat} clickedStat={clickedStat} setData={setData}/>
           <div className="divGrid">
