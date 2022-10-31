@@ -28,7 +28,7 @@ export const PokeScreen = () => {
   const handleAbilityOpen = (e) => {
     showAbility ? setShowAbility(false) : setShowAbility(true);
   };
-  // console.log(singlePokeData);
+
   
   const {
     id,
