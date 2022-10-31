@@ -3,27 +3,35 @@ import useForm from "../../Hooks/useForm";
 import { useNavigate, useLocation } from "react-router-dom";
 import { LlamadaPokemons } from "../../../helper/LlamadaPokemons";
 import './SearchBar.css'
-import { PokeGrillaItem } from "./PokeGrillaItem";
+import { PokeDataContext } from "./Context/PokeDataContext";
+import { useContext, useEffect } from "react";
 
 export const SearchBar = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [pokeName, setPokeName] = useState('')
-  const { singlePokeData } = LlamadaPokemons(pokeName);
-
+  const {showSinglePokemon, setShowSinglePokemon } = useContext( PokeDataContext )
+  
+  
   const [formValues, handleInputChange] = useForm({
   });
-
+  
   const { searchText } = formValues;
+  const [pokeName, setPokeName] = useState('')
+  const { singlePokeData } = LlamadaPokemons(pokeName);
   
   const handleSearch = (e) => {
     e.preventDefault()
-    setPokeName(e.target.value)
+    pokeName !== '' && setShowSinglePokemon(singlePokeData)
   }
-
-  console.log(pokeName)
-  console.log(singlePokeData)
   
+  useEffect(() => {
+    if (searchText) {
+      setPokeName(searchText)
+    }
+  }, [searchText])
+  
+
+  console.log(searchText)
+
+
   return (
     <>
       <div>
@@ -35,9 +43,10 @@ export const SearchBar = () => {
               className="form-control"
               name="searchText"
               autoComplete="off"
-              onChange={handleInputChange}
               value={searchText}
+              onChange={handleInputChange}
             />
+            <button className="searchButton" type="submit">Search</button>
           </form>
         </div>
         <div>

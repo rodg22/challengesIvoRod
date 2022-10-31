@@ -8,3 +8,9 @@
     display: flex;
     margin-top: -50px;
 }
+
+
+.searchButton {
+    margin-top: -0;
+    height: 50px;
+}

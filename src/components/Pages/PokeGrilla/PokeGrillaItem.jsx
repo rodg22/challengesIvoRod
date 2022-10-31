@@ -7,11 +7,28 @@ import { CardActionArea } from "@mui/material";
 import { colorTipos } from "../../../helper/colorTipos";
 import { Link } from "react-router-dom";
 import { Spinner } from "../../Spinner";
+import { PokeDataContext } from "./Context/PokeDataContext";
+import { useContext } from "react";
+import { useState, useEffect } from "react";
 
 export const PokeGrillaItem = ({ data }) => {
+  const [prueba, setPrueba] = useState(false);
+
+  const { showSinglePokemon } = useContext(PokeDataContext);
+
+  useEffect(() => {
+    if (showSinglePokemon) {
+      setPrueba(true);
+    }
+  }, [showSinglePokemon]);
+
+  console.log(showSinglePokemon, "Pruebo context en PokeGrillaItems");
+
   return (
     <>
-      {data.length ? (
+      {prueba ? (
+        showSinglePokemon?.name
+      ) : data.length ? (
         data.map(({ name, stats, sprites, id, types }) => {
           return (
             <Link to={`/PokeScreen${id}`} style={{ textDecoration: "none" }}>

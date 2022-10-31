@@ -10,6 +10,7 @@ import { PokeGrillaItem } from './PokeGrillaItem'
 import {Stats} from '../Stats'
 import { LlamadaStats } from '../../../helper/LlamadaStats'
 import { SearchBar } from './SearchBar'
+import PokeDataProvider from './Context/PokeDataProvider'
 
 export const PokeGrilla = () => {
   const {pokeData, setPage, page} = PokemonsApi()
@@ -62,6 +63,7 @@ export const PokeGrilla = () => {
       break
   }
 
+
   return (
     <>
       {/* Filtrar por stat: HP, Attack, Defense, S.a, S.d, Speed.
@@ -77,6 +79,8 @@ export const PokeGrilla = () => {
       
       */}
       <h1>POKEGRID</h1>
+      <PokeDataProvider>
+
       {data.length ? (
         <>
           <ButtonsTypes setTypes={setTypes} />
@@ -99,11 +103,12 @@ export const PokeGrilla = () => {
           justifyContent: 'center',
           margin: '50px 0',
         }}
-      >
+        >
         {types === '' &&  clickedStat === '' && (
           <PaginationControlled setPage={setPage} page={page} types={types} />
         )}
       </div>
+        </PokeDataProvider>
     </>
   )
 }
