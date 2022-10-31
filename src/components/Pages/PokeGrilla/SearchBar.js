@@ -29,7 +29,7 @@ export const SearchBar = () => {
       setPokeName(searchText.length > 2 ? searchText : '')
       setSinglePokeData(pokeName)
     }
-  }, [searchText, pokeName])
+  }, [searchText])
   
 
   console.log(singlePokeData)
