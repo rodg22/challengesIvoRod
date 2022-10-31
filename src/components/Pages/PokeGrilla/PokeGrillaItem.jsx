@@ -53,7 +53,7 @@ export const PokeGrillaItem = ({ data }) => {
                 variant="h5"
                 component="div"
               >
-                {/* {showSinglePokemon? showSinglePokemon?.name[0]?.toUpperCase() + showSinglePokemon?.name?.substring(1) : null} */}
+                {showSinglePokemon? showSinglePokemon?.name[0]?.toUpperCase() + showSinglePokemon?.name?.substring(1) : null}
               </Typography>
 
               <div className="contenedorSpans">

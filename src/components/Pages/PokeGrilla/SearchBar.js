@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import useForm from "../../Hooks/useForm";
 import { LlamadaPokemons } from "../../../helper/LlamadaPokemons";
 import './SearchBar.css'
 import { PokeDataContext } from "./Context/PokeDataContext";
@@ -8,13 +7,17 @@ import { useContext, useEffect } from "react";
 
 export const SearchBar = () => {
   const {showSinglePokemon, setShowSinglePokemon } = useContext( PokeDataContext )
-  const [clearInput, setClearInput] = useState(false)
-  
-  
-  const [values, handleInputChange] = useForm({
-  });
-  
-  const { searchText } = values;
+
+  const [values, setValues] = useState('');
+
+  const reset = () => {
+    setValues('');
+  };
+
+  const handleInputChange = (e) => {
+    setValues(e.target.value)
+    };
+
   const [pokeName, setPokeName] = useState('')
   const { singlePokeData, setSinglePokeData } = LlamadaPokemons(pokeName);
   
@@ -22,14 +25,14 @@ export const SearchBar = () => {
   const handleSearch = (e) => {
     e.preventDefault()
     pokeName === '' ? setShowSinglePokemon(null) : setShowSinglePokemon(singlePokeData)
-    setClearInput(true)
+    pokeName === '' && reset()
   }
   useEffect(() => {
-    if (searchText) {
-      setPokeName(searchText.length > 2 ? searchText : '')
+    if (values) {
+      setPokeName((values.length > 2 && values !== '') ? values : '')
       setSinglePokeData(pokeName)
     }
-  }, [searchText])
+  }, [values])
   
 
   console.log(singlePokeData)
@@ -44,9 +47,9 @@ export const SearchBar = () => {
               type="text"
               placeholder="Buscar por Nombre"
               className="form-control"
-              name={"searchText"}
+              name={values}
               autoComplete="off"
-              value={searchText}
+              value={values}
               onChange={handleInputChange}
             />
             <button className="searchButton" type="submit">Search</button>
