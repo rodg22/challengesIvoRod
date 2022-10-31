@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { PokemonsApi } from '../../../helper/PokemonsApi'
 import { LlamadaTipos } from '../../../helper/LlamadaTipos'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import './PokeGrilla.css'
 import { ButtonsTypes } from '../PokeTypes/index'
 import { Spinner } from '../../Spinner'
@@ -12,6 +12,8 @@ import { LlamadaStats } from '../../../helper/LlamadaStats'
 import { SearchBar } from './SearchBar'
 import PokeDataProvider from './Context/PokeDataProvider'
 
+
+
 export const PokeGrilla = () => {
   const {pokeData, setPage, page} = PokemonsApi()
   const {pokeStats, setPokeStats} = LlamadaStats()
@@ -19,6 +21,8 @@ export const PokeGrilla = () => {
   const [clickedStat, setClickedStat] = useState('')
   const { filteredPokeData } = LlamadaTipos(types)
   const [data, setData] = useState([])
+
+
 
 
 
@@ -66,6 +70,7 @@ export const PokeGrilla = () => {
 
   return (
     <>
+      <PokeDataProvider>
       {/* Filtrar por stat: HP, Attack, Defense, S.a, S.d, Speed.
       De mayor a menor --> pagination? Renderizar de a 20
 
@@ -79,8 +84,6 @@ export const PokeGrilla = () => {
       
       */}
       <h1>POKEGRID</h1>
-      <PokeDataProvider>
-
       {data.length ? (
         <>
           <ButtonsTypes setTypes={setTypes} />
@@ -106,9 +109,9 @@ export const PokeGrilla = () => {
         >
         {types === '' &&  clickedStat === '' && (
           <PaginationControlled setPage={setPage} page={page} types={types} />
-        )}
+          )}
       </div>
-        </PokeDataProvider>
+      </PokeDataProvider>
     </>
   )
 }
