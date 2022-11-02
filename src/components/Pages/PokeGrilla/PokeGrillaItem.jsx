@@ -16,13 +16,15 @@ export const PokeGrillaItem = ({ data }) => {
 
   const { showSinglePokemon } = useContext(PokeDataContext);
 
+
   useEffect(() => {
-    if (showSinglePokemon) {
+    if (showSinglePokemon?.name ? true : false) {
+      console.log(showSinglePokemon, 'enPokeGrillaItem')
       setPrueba(true);
-    } else if (showSinglePokemon === null) {
+    }  else {
       setPrueba(false)
     }
-  }, [showSinglePokemon]);
+    }, [showSinglePokemon]);
   
 
   return (

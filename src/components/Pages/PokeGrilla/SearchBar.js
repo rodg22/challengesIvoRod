@@ -9,13 +9,10 @@ export const SearchBar = () => {
   const {showSinglePokemon, setShowSinglePokemon } = useContext( PokeDataContext )
 
   const [values, setValues] = useState('');
-
-  const reset = () => {
-    setValues('');
-  };
+  const [inputValues, setInputValues] = useState('');
 
   const handleInputChange = (e) => {
-    setValues(e.target.value)
+    setInputValues(e.target.value)
     };
 
   const [pokeName, setPokeName] = useState('')
@@ -24,32 +21,32 @@ export const SearchBar = () => {
   
   const handleSearch = (e) => {
     e.preventDefault()
-    pokeName === '' ? setShowSinglePokemon(null) : setShowSinglePokemon(singlePokeData)
-    pokeName === '' && reset()
+    inputValues !== '' ? setValues(inputValues) : setShowSinglePokemon(null)
   }
   useEffect(() => {
     if (values) {
-      setPokeName((values.length > 2 && values !== '') ? values : '')
-      setSinglePokeData(pokeName)
-    }
+      setPokeName(inputValues)
+    } 
   }, [values])
-  
 
-  console.log(singlePokeData)
-
+  useEffect(() => {
+      setShowSinglePokemon(singlePokeData)
+      setValues('')
+      setInputValues('')
+  }, [singlePokeData])
 
   return (
     <>
       <div>
         <div>
-          <form className="searchForm" onClick={handleSearch}>
+          <form className="searchForm" onSubmit={handleSearch}>
             <input
               type="text"
               placeholder="Buscar por Nombre"
               className="form-control"
-              name={values}
+              name={inputValues}
               autoComplete="off"
-              value={values}
+              value={inputValues}
               onChange={handleInputChange}
             />
             <button className="searchButton" type="submit">Search</button>
