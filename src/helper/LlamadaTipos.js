@@ -8,7 +8,7 @@ export const LlamadaTipos = (types) => {
   const [results, setResults] = useState([]);
   const { setPokeData } = PokemonsApi();
 
-  const url = `https://pokeapi.co/api/v2/type/${types}/`;
+  const url = `https://pokeapi.co/api/v2/type/${types}?/`;
 
   useEffect(() => {
     axios.get(url).then((res) => setResults(res.data.pokemon));
@@ -16,7 +16,7 @@ export const LlamadaTipos = (types) => {
   }, [url]);
 
   useEffect(() => {
-    results.forEach((resultado) => {
+    results?.forEach((resultado) => {
       axios
         .get(resultado.pokemon.url)
         .then(({ data }) =>

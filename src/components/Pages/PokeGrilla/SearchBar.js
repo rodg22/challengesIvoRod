@@ -10,30 +10,41 @@ export const SearchBar = () => {
 
   const [values, setValues] = useState('');
   const [inputValues, setInputValues] = useState('');
+  const [textError, setTextError] = useState('textErrorDisabled')
 
   const handleInputChange = (e) => {
     setInputValues(e.target.value)
     };
 
   const [pokeName, setPokeName] = useState('')
-  const { singlePokeData, setSinglePokeData } = LlamadaPokemons(pokeName);
-  
-  
+  const { singlePokeData, error, setError } = LlamadaPokemons(pokeName);
+
   const handleSearch = (e) => {
     e.preventDefault()
     inputValues !== '' ? setValues(inputValues) : setShowSinglePokemon(null)
+    error && setError(false)
   }
+
   useEffect(() => {
     if (values) {
       setPokeName(inputValues)
     } 
-  }, [values])
+    if (error) {
+       setTextError('textError')
+       setValues('')
+       setInputValues('')
+
+      } else {
+        setTextError('textErrorDisabled')
+      }
+  }, [values, error])
 
   useEffect(() => {
       setShowSinglePokemon(singlePokeData)
       setValues('')
       setInputValues('')
   }, [singlePokeData])
+
 
   return (
     <>
@@ -49,8 +60,10 @@ export const SearchBar = () => {
               value={inputValues}
               onChange={handleInputChange}
             />
-            <button className="searchButton" type="submit">Search</button>
+
+            <button className="searchButton" onClick={handleSearch}>Search</button>
           </form>
+            <p className={textError}>Este pokemon no existe o el nombre esta mal escrito.</p>
         </div>
         <div>
         </div>

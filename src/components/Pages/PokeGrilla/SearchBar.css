@@ -14,3 +14,18 @@
     margin-top: -0;
     height: 50px;
 }
+
+
+.textErrorDisabled {
+    text-align: center;
+    margin-top: -40px;
+    color: red;
+    display: none;
+}
+
+.textError {
+    text-align: center;
+    margin-top: -40px;
+    color: red;
+    display: block;
+}
