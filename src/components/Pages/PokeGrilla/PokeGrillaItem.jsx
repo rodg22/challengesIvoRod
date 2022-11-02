@@ -19,7 +19,6 @@ export const PokeGrillaItem = ({ data }) => {
 
   useEffect(() => {
     if (showSinglePokemon?.name ? true : false) {
-      console.log(showSinglePokemon, 'enPokeGrillaItem')
       setPrueba(true);
     }  else {
       setPrueba(false)
