@@ -9,7 +9,7 @@ import { PaginationControlled } from '../../Pagination/PaginationControlled'
 import { PokeGrillaItem } from './PokeGrillaItem'
 import {Stats} from '../Stats'
 import { LlamadaStats } from '../../../helper/LlamadaStats'
-import { SearchBar } from './SearchBar'
+import { SearchBar} from './SearchBar'
 import PokeDataProvider from './Context/PokeDataProvider'
 
 
