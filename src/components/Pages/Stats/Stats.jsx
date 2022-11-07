@@ -1,8 +1,14 @@
 import React from "react";
 import "./Stats.css";
+import { PokeDataContext } from "../PokeGrilla/Context/PokeDataContext";
+import { useContext } from "react";
 
 export const Stats = ({ setClickedStat, setData }) => {
+
+  const { setShowSinglePokemon } = useContext(PokeDataContext);
+
   const handleChange = (e) => {
+    setShowSinglePokemon(false)
     setData([]);
     setClickedStat(e.target.innerText);
   };

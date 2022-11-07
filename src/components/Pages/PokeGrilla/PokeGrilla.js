@@ -13,7 +13,6 @@ import { SearchBar} from './SearchBar'
 import PokeDataProvider from './Context/PokeDataProvider'
 
 
-
 export const PokeGrilla = () => {
   const {pokeData, setPage, page} = PokemonsApi()
   const {pokeStats, setPokeStats} = LlamadaStats()

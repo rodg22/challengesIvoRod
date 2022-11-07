@@ -12,23 +12,19 @@ import { useContext } from "react";
 import { useState, useEffect } from "react";
 
 export const PokeGrillaItem = ({ data }) => {
-  const [prueba, setPrueba] = useState(false);
+  const [isSinglePokemon, setIsSinglePokemon] = useState(false);
 
   const { showSinglePokemon } = useContext(PokeDataContext);
 
 
   useEffect(() => {
-    if (showSinglePokemon?.name ? true : false) {
-      setPrueba(true);
-    }  else {
-      setPrueba(false)
-    }
+    showSinglePokemon?.name ? setIsSinglePokemon(true) : setIsSinglePokemon(false)
     }, [showSinglePokemon]);
-  
+
 
   return (
     <>
-      {prueba ? (
+      {isSinglePokemon ? (
         <Link to={`/PokeScreen${showSinglePokemon?.id}`} style={{ textDecoration: "none" }}>
         <Card
           className="divGridDiv"
@@ -61,11 +57,11 @@ export const PokeGrillaItem = ({ data }) => {
                 {showSinglePokemon?.types?.map(({ type: { name } }, index) => {
                   return (
                     <div
-                      key={index}
+                      key={name}
                       className="type"
                       style={{ backgroundColor: colorTipos(name) }}
                     >
-                      <p key={index} className="typeText">
+                      <p className="typeText">
                         {name?.toUpperCase()}
                       </p>
                     </div>
@@ -83,7 +79,7 @@ export const PokeGrillaItem = ({ data }) => {
               >
                 {showSinglePokemon?.stats?.map((stat, index) => {
                   return (
-                    <li className="list" key={index}>
+                    <li className="list" key={stat.stat.name}>
                       {stat.stat.name.toUpperCase()}
                       <div
                         className="borderDiv"
@@ -124,10 +120,9 @@ export const PokeGrillaItem = ({ data }) => {
       ) : data.length ? (
         data.map(({ name, stats, sprites, id, types }) => {
           return (
-            <Link to={`/PokeScreen${id}`} style={{ textDecoration: "none" }}>
+            <Link to={`/PokeScreen${id}`} key={id} style={{ textDecoration: "none" }}>
               <Card
                 className="divGridDiv"
-                key={id}
                 sx={{ maxWidth: 500, minWidth: 300 }}
               >
                 <CardActionArea>
@@ -156,7 +151,7 @@ export const PokeGrillaItem = ({ data }) => {
                       {types.map(({ type: { name } }, index) => {
                         return (
                           <div
-                            key={index}
+                            key={name + index}
                             className="type"
                             style={{ backgroundColor: colorTipos(name) }}
                           >
@@ -178,7 +173,7 @@ export const PokeGrillaItem = ({ data }) => {
                     >
                       {stats.map((stat, index) => {
                         return (
-                          <li className="list" key={index}>
+                          <li className="list" key={stat.stat.name + index}>
                             {stat.stat.name.toUpperCase()}
                             <div
                               className="borderDiv"

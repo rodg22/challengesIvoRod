@@ -2,9 +2,12 @@ import React from "react";
 import { colorTipos } from "../../../helper/colorTipos";
 import "./buttonsTypes.css";
 import Swal from "sweetalert2";
+import { PokeDataContext } from "../PokeGrilla/Context/PokeDataContext";
+import { useContext } from "react";
 
 export const ButtonsTypes = ({ setTypes }) => {
 
+  const { setShowSinglePokemon } = useContext(PokeDataContext);
 
   let tipos = [
     "fighting",
@@ -28,6 +31,7 @@ export const ButtonsTypes = ({ setTypes }) => {
   ];
 
   const handleClick = (e) => {
+    setShowSinglePokemon(false);
     setTypes(e.target.innerHTML);
     Swal.fire({
       background: `var(--${e.target.innerHTML})`,
