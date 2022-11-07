@@ -12,23 +12,23 @@ import { useContext } from "react";
 import { useState, useEffect } from "react";
 
 export const PokeGrillaItem = ({ data }) => {
-  const [prueba, setPrueba] = useState(false);
+  const [isSinglePokemon, setIsSinglePokemon] = useState(false);
 
   const { showSinglePokemon } = useContext(PokeDataContext);
 
 
   useEffect(() => {
-    if (showSinglePokemon?.name ? true : false) {
-      setPrueba(true);
-    }  else {
-      setPrueba(false)
-    }
+    showSinglePokemon?.name ? setIsSinglePokemon(true) : setIsSinglePokemon(false)
     }, [showSinglePokemon]);
   
+console.log(isSinglePokemon, 'isSinglePokemon')
+console.log(showSinglePokemon, 'showSinglePokemon')
+
+
 
   return (
     <>
-      {prueba ? (
+      {isSinglePokemon ? (
         <Link to={`/PokeScreen${showSinglePokemon?.id}`} style={{ textDecoration: "none" }}>
         <Card
           className="divGridDiv"
