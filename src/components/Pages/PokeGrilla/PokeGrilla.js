@@ -22,9 +22,6 @@ export const PokeGrilla = () => {
   const [data, setData] = useState([])
 
 
-
-
-
   useEffect(() => {
     types === '' ? clickedStat === '' ? setData(pokeData) : setData(pokeStats) : setData(filteredPokeData)
   }, [filteredPokeData, pokeData, types, clickedStat])
@@ -87,7 +84,7 @@ export const PokeGrilla = () => {
         <>
           <ButtonsTypes setTypes={setTypes} />
           <SearchBar />
-          <div style={{display: 'flex'}}>
+          <div className='pokegrillaContainer'>
           <Stats setClickedStat={setClickedStat} clickedStat={clickedStat} setData={setData}/>
           <div className="divGrid">
             <PokeGrillaItem data={data} setData={setData} />
