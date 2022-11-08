@@ -105,31 +105,19 @@ const HamburgerMenu = ({ open, setOpen }) => {
           }}
         >
           <ListItemButton>
-            <NavLink to={"/HomeScreen"}>Home</NavLink>
+            <NavLink onClick={handleDrawerClose} to={"/HomeScreen"}>Home</NavLink>
           </ListItemButton>
           <ListItemButton>
-            <NavLink to={"/RandomPokemon"}>Random Pokemon</NavLink>
+            <NavLink onClick={handleDrawerClose} to={"/RandomPokemon"}>Random Pokemon</NavLink>
           </ListItemButton>
           <ListItemButton>
-            <NavLink to={"/PokeGrid"}>Pokemon Grid</NavLink>
+            <NavLink onClick={handleDrawerClose} to={"/PokeGrid"}>Pokemon Grid</NavLink>
           </ListItemButton>
           <ListItemButton>
-            <NavLink to={"/Tournament"}>Tournament</NavLink>
+            <NavLink onClick={handleDrawerClose} to={"/Tournament"}>Tournament</NavLink>
           </ListItemButton>
         </List>
         <Divider />
-        {/* <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List> */}
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
