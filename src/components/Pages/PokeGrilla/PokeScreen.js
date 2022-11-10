@@ -4,6 +4,8 @@ import { LlamadaPokemons } from "../../../helper/LlamadaPokemons";
 import "./PokeScreen.css";
 import { colorTipos } from "../../../helper/colorTipos";
 import { Spinner } from "../../Spinner";
+import { Tabla } from '../PokeGrilla/index'
+
 
 export const PokeScreen = () => {
   const { pokeId } = useParams();
@@ -47,11 +49,7 @@ export const PokeScreen = () => {
       {sprites ? (
         <div>
           <div className="margin-button">
-            <button
-              onClick={handleReturn}
-              size="small"
-              color="primary"
-            >
+            <button onClick={handleReturn} size="small" color="primary">
               Back
             </button>
           </div>
@@ -92,17 +90,17 @@ export const PokeScreen = () => {
                 <p>Height: {height / 10} m</p>
                 <p>Weight: {weight / 10} kg</p>
               </div>
+              <Tabla abilities={abilities} />
             </div>
           </div>
           <div style={{ marginLeft: 50, marginTop: 50 }}>
-            <div>
+            {/* <div>
               <button className="pokeScreenButtons" onClick={handleAbilityOpen}>
                 Abilities:
               </button>
               {showAbility && (
                 <ul>
                   {abilities?.map(({ ability }) => {
-                    console.log(ability)
                     return (
                       <li
                         style={{ color: "black", width: `100%` }}
@@ -114,7 +112,7 @@ export const PokeScreen = () => {
                   })}
                 </ul>
               )}
-            </div>
+            </div> */}
             <div>
               <button className="pokeScreenButtons" onClick={handleStatsOpen}>
                 Stats:
