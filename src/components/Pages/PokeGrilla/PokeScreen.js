@@ -100,7 +100,7 @@ export const PokeScreen = () => {
           <div style={{ marginLeft: 50, marginTop: 50 }}>
             <div>
               <Button variant='contained' sx={{marginBottom: '20px'}} className="pokeScreenButtons" onClick={handleStatsOpen}>
-                Stats:
+                Stats
               </Button>
               {showStats && (
                 <ul>
@@ -146,7 +146,7 @@ export const PokeScreen = () => {
             </div>
             <div>
               <Button variant='contained' sx={{marginBottom: '20px'}} className="pokeScreenButtons" onClick={handleMovesOpen}>
-                Moves:
+                Moves
               </Button>
               {showMoves && (
                 <ul>
