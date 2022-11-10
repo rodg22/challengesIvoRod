@@ -4,8 +4,8 @@ import { LlamadaPokemons } from "../../../helper/LlamadaPokemons";
 import "./PokeScreen.css";
 import { colorTipos } from "../../../helper/colorTipos";
 import { Spinner } from "../../Spinner";
-import { Tabla } from '../PokeGrilla/index'
-
+import { Button } from "@mui/material";
+import { Tabla} from '../PokeGrilla/index'
 
 export const PokeScreen = () => {
   const { pokeId } = useParams();
@@ -49,9 +49,13 @@ export const PokeScreen = () => {
       {sprites ? (
         <div>
           <div className="margin-button">
-            <button onClick={handleReturn} size="small" color="primary">
+            <Button variant='contained' sx={{marginBottom: '20px'}}
+              onClick={handleReturn}
+              size="small"
+              color="primary"
+            >
               Back
-            </button>
+            </Button>
           </div>
           <div className="imgDiv">
             <div className="animate__animated animate__fadeInLeft">
@@ -94,29 +98,10 @@ export const PokeScreen = () => {
             </div>
           </div>
           <div style={{ marginLeft: 50, marginTop: 50 }}>
-            {/* <div>
-              <button className="pokeScreenButtons" onClick={handleAbilityOpen}>
-                Abilities:
-              </button>
-              {showAbility && (
-                <ul>
-                  {abilities?.map(({ ability }) => {
-                    return (
-                      <li
-                        style={{ color: "black", width: `100%` }}
-                        key={ability.name}
-                      >
-                        {ability.name}
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
-            </div> */}
             <div>
-              <button className="pokeScreenButtons" onClick={handleStatsOpen}>
+              <Button variant='contained' sx={{marginBottom: '20px'}} className="pokeScreenButtons" onClick={handleStatsOpen}>
                 Stats:
-              </button>
+              </Button>
               {showStats && (
                 <ul>
                   {stats?.map((stat, index) => {
@@ -160,9 +145,9 @@ export const PokeScreen = () => {
               )}
             </div>
             <div>
-              <button className="pokeScreenButtons" onClick={handleMovesOpen}>
+              <Button variant='contained' sx={{marginBottom: '20px'}} className="pokeScreenButtons" onClick={handleMovesOpen}>
                 Moves:
-              </button>
+              </Button>
               {showMoves && (
                 <ul>
                   {moves?.map(({ move }, index) => {
