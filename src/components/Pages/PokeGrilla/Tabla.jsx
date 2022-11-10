@@ -11,14 +11,16 @@ export const Tabla = ({ abilities }) => {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 320 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="center">Normal Ability 1</TableCell>
+            <TableCell align="center">{abilities.length > 2 ? 'Ability 1' : 'Ability'}</TableCell>
             {abilities.length > 2 && (
-              <TableCell align="center">Normal Ability 2</TableCell>
+              <TableCell align="center"> Ability 2</TableCell>
             )}
+            {abilities[abilities.length-1].is_hidden &&
             <TableCell align="center">Hidden Ability</TableCell>
+            }
           </TableRow>
         </TableHead>
         <TableBody>
