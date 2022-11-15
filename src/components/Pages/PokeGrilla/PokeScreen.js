@@ -6,29 +6,16 @@ import { colorTipos } from "../../../helper/colorTipos";
 import { Spinner } from "../../Spinner";
 import { Button } from "@mui/material";
 import { Tabla} from '../PokeGrilla/index'
+import StatTable from "./StatTable";
+import MoveTable from "./MoveTable";
 
 export const PokeScreen = () => {
   const { pokeId } = useParams();
   const navigate = useNavigate();
   const { singlePokeData } = LlamadaPokemons(pokeId);
-  const [showMoves, setShowMoves] = useState(false);
-  const [showStats, setShowStats] = useState(false);
-  const [showAbility, setShowAbility] = useState(false);
 
   const handleReturn = (e) => {
     navigate(-1);
-  };
-
-  const handleMovesOpen = (e) => {
-    showMoves ? setShowMoves(false) : setShowMoves(true);
-  };
-
-  const handleStatsOpen = (e) => {
-    showStats ? setShowStats(false) : setShowStats(true);
-  };
-
-  const handleAbilityOpen = (e) => {
-    showAbility ? setShowAbility(false) : setShowAbility(true);
   };
 
   const {
@@ -47,7 +34,7 @@ export const PokeScreen = () => {
   return (
     <>
       {sprites ? (
-        <div>
+        <div className="pokeScreen-container">
           <div className="margin-button">
             <Button variant='contained' sx={{marginBottom: '20px'}}
               onClick={handleReturn}
@@ -69,7 +56,7 @@ export const PokeScreen = () => {
               ></img>
             </div>
             <div className="animate__animated animate__fadeIn">
-              <h1>
+              <h1 style={{ textAlign: "left" }}>
                 #{id} {name ? name[0].toUpperCase() + name?.substring(1) : null}
               </h1>
               <div
@@ -98,53 +85,9 @@ export const PokeScreen = () => {
             </div>
           </div>
           <div style={{ marginLeft: 50, marginTop: 50 }}>
-            <div>
-              <Button variant='contained' sx={{marginBottom: '20px'}} className="pokeScreenButtons" onClick={handleStatsOpen}>
-                Stats
-              </Button>
-              {showStats && (
-                <ul>
-                  {stats?.map((stat, index) => {
-                    return (
-                      <li
-                        style={{ color: "black", textAlign: "center" }}
-                        key={index}
-                      >
-                        {stat.stat.name.toUpperCase()}
-                        <div
-                          className="borderDiv"
-                          style={{
-                            backgroundColor: "white",
-                            width: 255,
-                            marginLeft: 0,
-                            borderRadius: 10,
-                          }}
-                        >
-                          <div
-                            style={{
-                              backgroundColor: "#1976d2",
-                              width: `${stat["base_stat"]}px`,
-                              marginLeft: -1,
-                              color: "white",
-                              borderRadius: 10,
-                            }}
-                          >
-                            <span
-                              style={{
-                                fontSize: `${stat["base_stat"]}` <= 25 && 12,
-                              }}
-                            >
-                              {stat["base_stat"]}
-                            </span>
-                          </div>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
-            </div>
-            <div>
+            <StatTable stats={stats}/>
+            <MoveTable moves={moves}/>
+            {/* <div>
               <Button variant='contained' sx={{marginBottom: '20px'}} className="pokeScreenButtons" onClick={handleMovesOpen}>
                 Moves
               </Button>
@@ -159,7 +102,7 @@ export const PokeScreen = () => {
                   })}
                 </ul>
               )}
-            </div>
+            </div> */}
           </div>
         </div>
       ) : (

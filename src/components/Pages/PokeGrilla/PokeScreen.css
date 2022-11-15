@@ -1,3 +1,10 @@
+.pokeScreen-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .margin-button {
     margin-left: 50px;
     margin-bottom: 30px;
@@ -18,19 +25,18 @@
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    justify-content: space-around;
-    width: 50%;
+    justify-content: space-between;
+    width: 60%
 }
-
 
 .typosEnPokeScreen {
     display: flex;
     position: absolute;
     top: 0;
     right: 0;
-    justify-content: right;
+    justify-content: left;
     margin-top: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     margin-right: 10px;
     height: 20px;
 }
@@ -41,4 +47,9 @@
 
 .div-measures p {
     margin-bottom: 0;
+}
+
+.stat-table-container {
+    width: 90%;
+    margin: 10px auto 0;
 }
