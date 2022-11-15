@@ -10,7 +10,7 @@ import Paper from "@mui/material/Paper";
 export const Tabla = ({ abilities }) => {
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer sx={{ marginTop: 3 }} component={Paper}>
       <Table sx={{ minWidth: 320 }} aria-label="simple table">
         <TableHead>
           <TableRow>
