@@ -15,6 +15,7 @@ export const Stats = ({ setClickedStat, setData }) => {
 
   const handleReset = () => {
     setClickedStat("");
+    setShowSinglePokemon(false);
   };
 
   return (

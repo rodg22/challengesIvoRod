@@ -16,7 +16,6 @@ export const PokeGrillaItem = ({ data }) => {
 
   const { showSinglePokemon } = useContext(PokeDataContext);
 
-
   useEffect(() => {
     showSinglePokemon?.name ? setIsSinglePokemon(true) : setIsSinglePokemon(false)
     }, [showSinglePokemon]);
