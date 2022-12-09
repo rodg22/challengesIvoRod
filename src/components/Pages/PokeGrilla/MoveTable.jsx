@@ -38,7 +38,7 @@ const MoveTable = ({ moves }) => {
                 <p>Power: {move.power}</p>
                 <p>Accuracy: {move.accuracy}</p>
                 <p>Category: {move.damage_class.name}</p>
-                <p>Description: {move.effect_entries[0].effect}</p>
+                <p>Description: {move.effect_entries[0] && move.effect_entries[0].effect}</p>
                 <p>PP: {move.pp}</p>
               </div>
             </li>
