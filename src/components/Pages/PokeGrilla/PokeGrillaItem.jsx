@@ -143,7 +143,7 @@ export const PokeGrillaItem = ({ data }) => {
                       variant="h5"
                       component="div"
                     >
-                      {name[0].toUpperCase() + name.substring(1)}
+                      {name[0]?.toUpperCase() + name.substring(1)}
                     </Typography>
 
                     <div className="contenedorSpans">
