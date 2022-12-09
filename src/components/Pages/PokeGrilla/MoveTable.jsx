@@ -1,17 +1,45 @@
-import React from 'react'
+import React from "react";
+import { useState, useEffect } from "react";
+import { LlamadaMoves } from "../../../helper/LlamadaMoves";
 
-const MoveTable = ({moves}) => {
+
+const MoveTable = ({ moves }) => {
+
+  const [arrayMoves, setArrayMoves] = useState([])
+
+  LlamadaMoves([arrayMoves])
+
+useEffect(() => {
+  moves?.map(({move:{name}}) => {
+    setArrayMoves((arrayMoves) => [...arrayMoves, name])
+  })
+}, [moves])
+
+
+// arrayMoves.map((name) => {
+//   console.log(name)
+// })
+
+
+
   return (
     <div>
+      <ul>
         {moves?.map(({ move }, index) => {
           return (
-            <p style={{ color: "black", width: `100%` }} key={index}>
+            <li
+              style={{ color: "black", width: `100%` }}
+              key={move.name + index}
+            >
+              <div>
               {move.name}
-            </p>
+              </div>
+            </li>
           );
         })}
-  </div>
-  )
-}
+      </ul>
+    </div>
+  );
+};
 
-export default MoveTable
+export default MoveTable;

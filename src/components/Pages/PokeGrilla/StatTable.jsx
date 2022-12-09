@@ -13,10 +13,10 @@ const StatTable = ({ stats }) => {
     <>
       <div className="stat-table-container">
         <TableContainer component={Paper}>
+                <h1 style={{width: '100%'}}>Stats</h1>
           <Table sx={{ minWidth: 320 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <h1 style={{width: '100%'}}>Stats</h1>
               </TableRow>
               <TableRow>
                 <TableCell align="center">HP</TableCell>

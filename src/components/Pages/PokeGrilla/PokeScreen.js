@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { LlamadaPokemons } from "../../../helper/LlamadaPokemons";
 import "./PokeScreen.css";
@@ -87,22 +87,6 @@ export const PokeScreen = () => {
           <div style={{ marginLeft: 50, marginTop: 50 }}>
             <StatTable stats={stats}/>
             <MoveTable moves={moves}/>
-            {/* <div>
-              <Button variant='contained' sx={{marginBottom: '20px'}} className="pokeScreenButtons" onClick={handleMovesOpen}>
-                Moves
-              </Button>
-              {showMoves && (
-                <ul>
-                  {moves?.map(({ move }, index) => {
-                    return (
-                      <li style={{ color: "black", width: `100%` }} key={index}>
-                        {move.name}
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
-            </div> */}
           </div>
         </div>
       ) : (

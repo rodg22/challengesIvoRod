@@ -10,7 +10,6 @@ import { PokeGrillaItem } from "./PokeGrillaItem";
 import { Stats } from "../Stats";
 import { LlamadaStats } from "../../../helper/LlamadaStats";
 import { SearchBar } from "./SearchBar";
-import PokeDataProvider from "./Context/PokeDataProvider";
 import { PokeDataContext } from "./Context/PokeDataContext";
 
 export const PokeGrilla = () => {
