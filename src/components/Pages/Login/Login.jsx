@@ -63,6 +63,8 @@ export const LoginScreen = () => {
       <button onClick={handleLogin} className="btn btn-primary">
         Login
       </button>
+
+      <h3 style={{textAlign: 'center', marginTop: '40px'}}>Por el momento pone el nombre de Usuario que te gustaría tenér, y cualqueir contraseña</h3>
     </div>
   );
 };

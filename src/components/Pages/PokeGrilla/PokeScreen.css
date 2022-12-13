@@ -53,3 +53,17 @@
     width: 90%;
     margin: 10px auto 0;
 }
+
+@media (max-width: 827px) {
+    .imgDiv {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-table-container {
+        margin:0px
+    }
+    .imgClass{
+        margin-right: 0;
+    }
+}
