@@ -25,7 +25,7 @@ const MoveTable = ({ moves }) => {
 
   return (
     <div>
-      <h1 style={{marginTop: '20px', marginBottom: '20px'}}>Atacks</h1>
+      <h1 style={{marginTop: '20px', marginBottom: '20px'}}>Attacks</h1>
       <ul >
         {newArrayMoves?.map((move, index) => {
           return (
