@@ -5,7 +5,7 @@ import "./PokeScreen.css";
 import { colorTipos } from "../../../helper/colorTipos";
 import { Spinner } from "../../Spinner";
 import { Button } from "@mui/material";
-import { Tabla} from '../PokeGrilla/index'
+import AbilityTable from "./AbilityTable"
 import StatTable from "./StatTable";
 import MoveTable from "./MoveTable";
 
@@ -81,7 +81,7 @@ export const PokeScreen = () => {
                 <p>Height: {height / 10} m</p>
                 <p>Weight: {weight / 10} kg</p>
               </div>
-              <Tabla abilities={abilities} />
+              <AbilityTable abilities={abilities} />
             </div>
           </div>
           <div style={{ marginLeft: 50, marginTop: 50 }}>
