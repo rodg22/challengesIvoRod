@@ -13,7 +13,7 @@ export const SearchBar = () => {
   const [textError, setTextError] = useState('textErrorDisabled')
 
   const handleInputChange = (e) => {
-    setInputValues(e.target.value)
+    setInputValues(e.target.value.toLowerCase())
     };
 
   const [pokeName, setPokeName] = useState('')

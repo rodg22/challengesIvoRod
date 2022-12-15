@@ -12,8 +12,8 @@ const StatTable = ({ stats }) => {
   return (
     <>
       <div className="stat-table-container">
-        <TableContainer component={Paper}>
                 <h1 style={{width: '100%'}}>Stats</h1>
+        <TableContainer component={Paper}>
           <Table sx={{ minWidth: 320 }} aria-label="simple table">
             <TableHead>
               <TableRow>

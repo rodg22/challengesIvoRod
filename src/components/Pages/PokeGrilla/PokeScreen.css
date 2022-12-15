@@ -16,7 +16,7 @@
 
 .imgClass {
     height: 300px;
-    width: 300px;
+    width: 300px !important;
     margin-right: 30px;
 }
 

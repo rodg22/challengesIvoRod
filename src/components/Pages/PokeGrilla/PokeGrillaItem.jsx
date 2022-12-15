@@ -75,7 +75,7 @@ export const PokeGrillaItem = ({ data }) => {
                   padding: "initial",
                 }}
               >
-                {showSinglePokemon?.stats?.map((stat, index) => {
+                {showSinglePokemon?.stats?.map((stat) => {
                   return (
                     <li className="list" key={stat.stat.name}>
                       {stat.stat.name.toUpperCase()}
@@ -91,7 +91,7 @@ export const PokeGrillaItem = ({ data }) => {
                         <div
                           style={{
                             backgroundColor: "#1976d2",
-                            width: `${stat["base_stat"]}px`,
+                            width: stat["base_stat"] >= 30 ? `${stat["base_stat"]}px` : '30px',
                             marginLeft: -1,
                             color: "white",
                             borderRadius: 10,
@@ -185,7 +185,7 @@ export const PokeGrillaItem = ({ data }) => {
                               <div
                                 style={{
                                   backgroundColor: "#1976d2",
-                                  width: `${stat["base_stat"]}px`,
+                                  width: stat["base_stat"] >= 30 ? `${stat["base_stat"]}px` : '30px',
                                   marginLeft: -1,
                                   color: "white",
                                   borderRadius: 10,
