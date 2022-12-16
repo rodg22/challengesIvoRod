@@ -6,10 +6,12 @@ import MoveTableData from "./MoveTableData";
 const MoveTable = ({ moves }) => {
   const [urlArrayMoves, setUrlArrayMoves] = useState([]);
   const [moveData, setMoveData] = useState([]);
+  const [learnedMethod, setLearnedMethod] = useState([])
+  const [versionLearned, setVersionLearned] = useState([])
 
   useEffect(() => {
     moves?.map(({ move: { url } }) => {
-      setUrlArrayMoves((arrayMoves) => [...arrayMoves, url]);
+      setUrlArrayMoves((urlArrayMoves) => [...urlArrayMoves, url]);
     });
   }, [moves]);
 
@@ -23,9 +25,23 @@ const MoveTable = ({ moves }) => {
     });
   }, [urlArrayMoves]);
 
+
+  useEffect(() => {
+    moves.map((move) => {
+
+      move.version_group_details[13] && setLearnedMethod((learnedMethod) => [...learnedMethod, {name: move.move.name, level: move.version_group_details[13].level_learned_at, method: move.version_group_details[13].move_learn_method.name}])
+    })
+  }, [moves])
+
+  
+
+    // const moveFinalData  = moveData.map((item, i) => Object.assign({}, item, learnedMethod[i]));
+    
+ 
+
   return (
     <div>
-      <MoveTableData moveData={moveData}/>
+      <MoveTableData moveData={moveData} learnedMethod={learnedMethod}/>
     </div>
   );
 };

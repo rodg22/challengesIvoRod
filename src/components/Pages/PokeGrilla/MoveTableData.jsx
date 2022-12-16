@@ -8,7 +8,10 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { colorTipos } from "../../../helper/colorTipos";
 
-const MoveTableData = ({ moveData }) => {
+const MoveTableData = ({ moveData, learnedMethod }) => {
+
+
+
 
   return (
     <>

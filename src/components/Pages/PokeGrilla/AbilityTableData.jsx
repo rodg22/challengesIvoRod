@@ -13,6 +13,8 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 const AbilityTableData = ({ hiddenAbility, abilitiesData }) => {
 
   return (
+    <div className="stat-table-container" style={{marginBottom: '20px'}}>
+    <h1 style={{width: '100%'}}>Abilities</h1>  
     <TableContainer sx={{ marginTop: 2 }} component={Paper}>
       <Table sx={{ minWidth: 320 }} aria-label="simple table">
         <TableHead>
@@ -52,6 +54,7 @@ const AbilityTableData = ({ hiddenAbility, abilitiesData }) => {
         </TableBody>
       </Table>
     </TableContainer>
+    </div>
   );
 };
 

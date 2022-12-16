@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { LlamadaPokemons } from "../../../helper/LlamadaPokemons";
 import "./PokeScreen.css";
 import { colorTipos } from "../../../helper/colorTipos";
 import { Spinner } from "../../Spinner";
 import { Button } from "@mui/material";
-import AbilityTable from "./AbilityTable"
+import AbilityTable from "./AbilityTable";
 import StatTable from "./StatTable";
 import MoveTable from "./MoveTable";
 
@@ -28,7 +28,6 @@ export const PokeScreen = () => {
     abilities,
     height,
     weight,
-    ...siglePokeData
   } = singlePokeData;
 
   return (
@@ -36,7 +35,9 @@ export const PokeScreen = () => {
       {sprites ? (
         <div className="pokeScreen-container">
           <div className="margin-button">
-            <Button variant='contained' sx={{marginBottom: '20px'}}
+            <Button
+              variant="contained"
+              sx={{ marginBottom: "20px" }}
               onClick={handleReturn}
               size="small"
               color="primary"
@@ -81,12 +82,12 @@ export const PokeScreen = () => {
                 <p>Height: {height / 10} m</p>
                 <p>Weight: {weight / 10} kg</p>
               </div>
-              <AbilityTable abilities={abilities} />
             </div>
           </div>
           <div style={{ marginLeft: 50, marginTop: 50 }}>
-            <StatTable stats={stats}/>
-            <MoveTable moves={moves}/>
+            <AbilityTable abilities={abilities} />
+            <StatTable stats={stats} />
+            <MoveTable moves={moves} />
           </div>
         </div>
       ) : (
