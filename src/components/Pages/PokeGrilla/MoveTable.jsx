@@ -7,7 +7,7 @@ const MoveTable = ({ moves }) => {
   const [urlArrayMoves, setUrlArrayMoves] = useState([]);
   const [moveData, setMoveData] = useState([]);
   const [learnedMethod, setLearnedMethod] = useState([])
-  const [versionLearned, setVersionLearned] = useState([])
+  const [moveFinalData, setMoveFinalData] = useState([])
 
   useEffect(() => {
     moves?.map(({ move: { url } }) => {
@@ -33,15 +33,51 @@ const MoveTable = ({ moves }) => {
     })
   }, [moves])
 
-  
+  const orderedMoveData = moveData.sort((a, b) => {
+    const moveA = a.name.toUpperCase(); // ignore upper and lowercase
+    const moveB = b.name.toUpperCase(); // ignore upper and lowercase
+    if (moveA < moveB) {
+      return -1;
+    }
+    if (moveA > moveB) {
+      return 1;
+    }
+    return 0;
+  });
 
-    // const moveFinalData  = moveData.map((item, i) => Object.assign({}, item, learnedMethod[i]));
+  const orderedlearnedMethod = learnedMethod.sort((a, b) => {
+    const moveA = a.name.toUpperCase(); // ignore upper and lowercase
+    const moveB = b.name.toUpperCase(); // ignore upper and lowercase
+    if (moveA < moveB) {
+      return -1;
+    }
+    if (moveA > moveB) {
+      return 1;
+    }
+    return 0;
+  });
+
+    useEffect(() => {
+      setMoveFinalData(orderedMoveData.map((item, i) => Object.assign({}, item, orderedlearnedMethod[i])))
+    }, [orderedMoveData, orderedlearnedMethod])
+
+    const orderedmoveByLevel = moveFinalData.sort((a, b) => a.level - b.level);
+
+    const orderedmoveFinalData = orderedmoveByLevel.sort((a, b) => {
+      const moveA = a.method.toUpperCase(); // ignore upper and lowercase
+      const moveB = b.method.toUpperCase(); // ignore upper and lowercase
+      if (moveA < moveB) {
+        return -1;
+      }
+      if (moveA > moveB) {
+        return 1;
+      }
+      return 0;
+    });
     
- 
-
   return (
     <div>
-      <MoveTableData moveData={moveData} learnedMethod={learnedMethod}/>
+      <MoveTableData orderedMoveData={orderedmoveFinalData}/>
     </div>
   );
 };

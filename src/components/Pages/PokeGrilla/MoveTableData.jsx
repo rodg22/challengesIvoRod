@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { colorTipos } from "../../../helper/colorTipos";
 
-const MoveTableData = ({ moveData, learnedMethod }) => {
+const MoveTableData = ({ orderedMoveData }) => {
 
   return (
     <>
@@ -30,50 +30,41 @@ const MoveTableData = ({ moveData, learnedMethod }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {moveData?.map((move, index) => {
+              {orderedMoveData?.map(({name, level, method, type, damage_class, power, accuracy, pp, effect_entries, effect_chance},index) => {
                 return (
                   <TableRow
                     style={{ color: "black", width: `100%` }}
-                    key={move.name + index}
+                    key={name + index}
                   >
                     <TableCell>
-                      {learnedMethod?.map(
-                        ({ level, name: moveName, index }) => {
-                          return (
-                            move.name === moveName && level !== 0 ? level : move.name === moveName && level === 0 && '-');
-                        }
-                      )}
+                            {level !== 0 ? level : '-'}
                     </TableCell>
                     <TableCell>
-                      {move.name &&
-                        move.name[0]?.toUpperCase() + move.name.substring(1)}
+                      {name &&
+                        name[0]?.toUpperCase() + name.substring(1)}
                     </TableCell>
                     <TableCell
                       style={{
-                        backgroundColor: colorTipos(move.type.name),
+                        backgroundColor: colorTipos(type.name),
                         width: 80,
                         color: "white",
                         fontWeight: "bold",
                       }}
                     >
-                      {move.type.name &&
-                        move.type.name[0]?.toUpperCase() +
-                          move.type.name.substring(1)}
+                      {type.name &&
+                        type.name[0]?.toUpperCase() +
+                          type.name.substring(1)}
                     </TableCell>
-                    <TableCell>{move.damage_class.name}</TableCell>
-                    <TableCell>{move.power || "-"}</TableCell>
-                    <TableCell>{move.accuracy || "-"}</TableCell>
-                    <TableCell>{move.pp}</TableCell>
-                    <TableCell>{learnedMethod?.map(
-                        ({ method, name: moveName, index }) => {
-                          return move.name === moveName && method;
-                        }
-                      )}</TableCell>
+                    <TableCell>{damage_class.name}</TableCell>
+                    <TableCell>{power || "-"}</TableCell>
+                    <TableCell>{accuracy || "-"}</TableCell>
+                    <TableCell>{pp}</TableCell>
+                    <TableCell>{method}</TableCell>
                     <TableCell>
-                      {move.effect_entries[0] &&
-                        move.effect_entries[0].short_effect.replace(
+                      {effect_entries[0] &&
+                        effect_entries[0].short_effect.replace(
                           "$effect_chance",
-                          move.effect_chance
+                          effect_chance
                         )}
                     </TableCell>
                   </TableRow>
