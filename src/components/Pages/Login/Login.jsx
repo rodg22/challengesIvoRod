@@ -5,7 +5,6 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Auth/Context";
 import "./Login.css";
 
-
 export const LoginScreen = () => {
   const navigate = useNavigate();
   const { onLogin } = useContext(AuthContext);
@@ -60,11 +59,19 @@ export const LoginScreen = () => {
         ></input>
       </form>
 
-      <button onClick={handleLogin} className="btn btn-primary">
+      <button onClick={handleLogin} className="btn btn-primary" style={{marginBottom: '40px'}}>
         Login
       </button>
 
-      <h3 style={{textAlign: 'center', marginTop: '40px'}}>Por el momento pone el nombre de Usuario que te gustaría tenér, y cualqueir contraseña</h3>
+      <p style={{ textAlign: "center", marginBottom: '5px'}}>
+        Not registered? Please sign in here
+      </p>
+      <button style={{marginTop: '10px'}}>Register</button>
+
+      <h3 style={{ textAlign: "center", marginTop: "40px" }}>
+        Por el momento pone el nombre de Usuario que te gustaría tenér, y
+        cualqueir contraseña
+      </h3>
     </div>
   );
 };
